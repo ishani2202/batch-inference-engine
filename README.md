@@ -6,7 +6,7 @@ Submit a JSON file of prompts and get a job ID instantly. In the background the 
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```mermaid
 flowchart LR
@@ -44,19 +44,19 @@ The full diagram, with every retry path and the crash-recovery loop, is in [docs
 
 ---
 
-## 📊 Results at a glance
+## Results at a glance
 
 | | Result |
 |---|---|
-| 🚀 **Adaptive vs fixed concurrency** (fake API that limits *concurrent* requests) | **6.9× faster, 137× fewer 429s**: 10.4 s vs 71.6 s, 6 vs 820 rejections ([evidence](docs/benchmarks/adaptive-vs-fixed/)) |
-| 🧠 **500,000 items** | Memory **flat at ~60 MB** from the first item to the last. A plain `json.load` of the same file needs 295 MB before doing any work. ([evidence](docs/benchmarks/500k/)) |
+| **Adaptive vs fixed concurrency** (fake API that limits *concurrent* requests) | **6.9× faster, 137× fewer 429s**: 10.4 s vs 71.6 s, 6 vs 820 rejections ([evidence](docs/benchmarks/adaptive-vs-fixed/)) |
+| **500,000 items** | Memory **flat at ~60 MB** from the first item to the last. A plain `json.load` of the same file needs 295 MB before doing any work. ([evidence](docs/benchmarks/500k/)) |
 | ☁️ **Real DigitalOcean run** (1,000 prompts, `mistral-3-14B`) | **993 ok + 7 bad rows isolated, 0 lost**, through **765 real 429s**, for **$0.016** ([evidence](docs/benchmarks/real-do-run/)) |
-| 💥 **`kill -9` mid-job** | Resumed automatically on restart: exactly 1,000 unique results, no loss, no duplicates ([evidence](docs/benchmarks/crash-recovery/)) |
-| ✅ **Quality** | 80 offline tests (46 unit + 34 integration), lint, CI on Python 3.11 / 3.12 / 3.13 |
+| **`kill -9` mid-job** | Resumed automatically on restart: exactly 1,000 unique results, no loss, no duplicates ([evidence](docs/benchmarks/crash-recovery/)) |
+| **Quality** | 80 offline tests (46 unit + 34 integration), lint, CI on Python 3.11 / 3.12 / 3.13 |
 
 ---
 
-## 📚 Contents
+## Contents
 
 [Quickstart](#quickstart) | [API](#api) | [How it works](#how-it-works) | [Scale thresholds](#scale-thresholds) | [Real DigitalOcean run](#real-digitalocean-run) | [Extensions](#extensions-spaces--webhook) | [Design decisions](#design-decisions) | [Testing](#testing) | [Configuration](#configuration) | [What I'd do next](#what-id-do-next)
 
