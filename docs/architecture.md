@@ -1,49 +1,39 @@
 # Architecture
 
+
 ```mermaid
 flowchart TD
-    Client([Client]) -->|"POST /job {input_file, webhook_url?}"| API[FastAPI]
-    API -.->|"202 + job_id, instantly"| Client
-    API -->|"start background asyncio task"| JM["Job Manager<br/>status + metrics per job"]
+    C1([Client]) -->|"POST /job"| API["API<br/>returns job ID instantly"]
 
-    subgraph ING["① Ingestion"]
-        F[("sample_batch.json")] --> PF["Pre-flight pass<br/>validate JSON + count items<br/>(streams, no API calls)"]
-        PF --> R["Streaming reader (ijson)<br/>yields (index, item) one at a time"]
-        DS["Done-set from JSONL<br/>(resume after crash)"] -.->|"skip finished indexes"| R
+    subgraph S1["1. Ingestion"]
+        PF["Pre-flight check<br/>valid JSON? count items"] --> R["Streaming reader<br/>one item at a time<br/>skips done items on resume"]
     end
 
-    subgraph SCAT["② Scatter"]
-        R -->|"await put() blocks when full"| Q[["Bounded queue<br/>QUEUE_SIZE = 100"]]
-        Q --> W1[Worker 1]
-        Q --> W2[Worker 2]
-        Q --> WN["Worker N<br/>(N = MAX_CONCURRENCY)"]
-        W1 & W2 & WN --> V{"valid item?<br/>object, non-empty prompt,<br/>≤ MAX_PROMPT_CHARS"}
+    subgraph S2["2. Scatter"]
+        Q[["Bounded queue<br/>max 100 waiting"]] --> W["Worker pool<br/>validates each item"]
     end
 
-    subgraph BP["③ Backpressure + throttling"]
-        V -->|yes| L["Shared AIMD controller<br/>acquire slot (limit adapts)<br/>pause on Retry-After"]
-        L --> C["Inference client<br/>1 slot per in-flight request"]
-        C -->|HTTPS| DO[("DigitalOcean<br/>Serverless Inference")]
-        DO -->|"429"| L2["halve limit (once per burst)<br/>+ full-jitter backoff<br/>(slot released while sleeping)"]
-        DO -->|"5xx / timeout"| B["full-jitter backoff<br/>≤ MAX_RETRIES"]
-        DO -->|"401 / 403 / 402 / 404"| X["stop the whole job<br/>(bad key, no billing, unknown model)"]
-        DO -->|"200"| S["success: +1 slot<br/>(slow start, then additive)"]
-        L2 --> L
-        B --> L
+    subgraph S3["3. Throttling"]
+        L["Shared speed controller<br/>429: halve · success: grow"] --> DO[("DigitalOcean<br/>Inference")]
+        DO -.->|"429 / 5xx / timeout<br/>retry with jitter"| L
+        DO -->|"401 / 402 / 403 / 404"| X["Stop whole job"]
     end
 
-    subgraph GATH["④ Gather"]
-        S --> RJ[("results.jsonl<br/>append + flush per item")]
-        V -->|no| EJ[("errors.jsonl")]
-        DO -->|"other 4xx / retries exhausted"| EJ
-        RJ -->|"every SPACES_FLUSH_SECONDS, if anything new<br/>(boto3 in a thread)"| SP[("DO Spaces<br/>results/part-00001.jsonl …")]
-        JM -->|"every 2s + at end"| MJ[("meta.json")]
+    subgraph S4["4. Gather"]
+        RJ[("results.jsonl")]
+        EJ[("errors.jsonl")]
     end
 
-    JM -->|"job finished"| WH["Webhook POST<br/>summary + retries"]
-    Client -->|"GET /job/{id}/status"| JM
-    Client -->|"GET /job/{id}/download"| DL["StreamingResponse<br/>JSON array built line by line"]
-    RJ --> DL
+    API --> PF
+    R -->|"waits when full"| Q
+    W -->|valid| L
+    W -->|invalid| EJ
+    DO -->|success| RJ
+    DO -->|"failed after retries"| EJ
+
+    RJ -.->|"every 30 s"| SP[("Spaces backup")]
+    S4 -->|"job done"| WH["Webhook"]
+    S4 --> C2(["Client<br/>GET /status · GET /download"])
 ```
 
 ## Walkthrough
