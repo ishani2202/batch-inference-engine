@@ -223,10 +223,10 @@ The spec suggests Llama 3 8B, but it is no longer offered: it isn't in `GET /v1/
 
 ## Extensions: Spaces + webhook
 
-Both are **tested live**, not just mocked.
+Both are **tested live**:
 
 - **Progressive upload to DigitalOcean Spaces.** Every `SPACES_FLUSH_SECONDS` (default 30) the newly written results are uploaded as numbered parts (`results/part-00001.jsonl`, …). An empty interval uploads nothing. Using time instead of a result count bounds what a machine loss can cost to one interval, whatever the job's speed. On a real bucket, a normal job **and a job killed with `kill -9` and resumed** both left parts that join **byte-for-byte** into the local results, with no gaps and no duplicates (stale parts from a crash are cleaned up).
-- **Completion webhook.** Pass `webhook_url` and the job summary is POSTed there when the job finishes, with retries on 5xx or network errors. A failing webhook never changes the job's result. Tested live against a receiver that rejected the first delivery: the retry went through.
+- **Completion webhook.** Pass `webhook_url` and the job summary is POSTed there when the job finishes, with retries on 5xx or network errors. A failing webhook never changes the job's result. 
 
 ---
 
