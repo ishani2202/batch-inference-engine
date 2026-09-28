@@ -1,0 +1,41 @@
+{
+  "job_id": "c26aead0fafb44f48d21f87dba5fb399",
+  "status": "completed",
+  "error": null,
+  "input_file": "sample_batch.json",
+  "model": "mistral-3-14B",
+  "created_at": "2026-09-27T03:40:05+00:00",
+  "started_at": "2026-09-27T03:40:05+00:00",
+  "finished_at": "2026-09-27T03:47:14+00:00",
+  "resumed": false,
+  "progress": {
+    "total": 1000,
+    "done": 1000,
+    "succeeded": 993,
+    "failed": 7,
+    "percent": 100.0
+  },
+  "performance": {
+    "elapsed_seconds": 428.35,
+    "items_per_second": 2.33,
+    "retries": 765,
+    "rate_limited_429s": 765,
+    "concurrency_limit": 5,
+    "peak_concurrency": 32
+  },
+  "tokens": {
+    "input": 14876,
+    "output": 67393
+  },
+  "estimated_cost_usd": 0.016454,
+  "errors_by_type": {
+    "invalid_input": 7
+  },
+  "resume": {
+    "input_path": "/Users/ishaniarya/Desktop/digocean_takehome/data/sample_batch.json",
+    "webhook_url": null,
+    "retries": 765,
+    "rate_limited_429s": 765,
+    "spaces": {}
+  }
+}

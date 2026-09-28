@@ -45,17 +45,17 @@ The full diagram, with every retry path and the crash-recovery loop, is in [docs
 
 | | Result |
 |---|---|
-| 🚀 **Adaptive vs fixed concurrency** (same rate-limited API) | **6.9× faster, 137× fewer 429s**: 10.4 s vs 71.6 s, 6 vs 820 rejections |
-| 🧠 **500,000 items** | Memory **flat at ~60 MB** from the first item to the last. A plain `json.load` of the same file needs 295 MB before doing any work. |
-| ☁️ **Real DigitalOcean run** (1,000 prompts, `mistral-3-14B`) | **993 ok + 7 bad rows isolated, 0 lost**, through **765 real 429s**, for **$0.016** |
-| 💥 **`kill -9` mid-job** | Resumed automatically on restart: exactly 1,000 unique results, no loss, no duplicates |
-| ✅ **Quality** | 80 offline tests, lint, CI on Python 3.11 / 3.12 / 3.13 |
+| 🚀 **Adaptive vs fixed concurrency** (fake API that limits *concurrent* requests) | **6.9× faster, 137× fewer 429s**: 10.4 s vs 71.6 s, 6 vs 820 rejections ([evidence](docs/benchmarks/adaptive-vs-fixed/)) |
+| 🧠 **500,000 items** | Memory **flat at ~60 MB** from the first item to the last. A plain `json.load` of the same file needs 295 MB before doing any work. ([evidence](docs/benchmarks/500k/)) |
+| ☁️ **Real DigitalOcean run** (1,000 prompts, `mistral-3-14B`) | **993 ok + 7 bad rows isolated, 0 lost**, through **765 real 429s**, for **$0.016** ([evidence](docs/benchmarks/real-do-run/)) |
+| 💥 **`kill -9` mid-job** | Resumed automatically on restart: exactly 1,000 unique results, no loss, no duplicates ([evidence](docs/benchmarks/crash-recovery/)) |
+| ✅ **Quality** | 80 offline tests (46 unit + 34 integration), lint, CI on Python 3.11 / 3.12 / 3.13 |
 
 ---
 
 ## 📚 Contents
 
-[Quickstart](#quickstart) | [API](#api) | [How it works](#how-it-works) | [Real DigitalOcean run](#real-digitalocean-run) | [Extensions](#extensions-spaces--webhook) | [Design decisions](#design-decisions) | [Testing](#testing) | [Configuration](#configuration) | [What I'd do next](#what-id-do-next)
+[Quickstart](#quickstart) | [API](#api) | [How it works](#how-it-works) | [Scale thresholds](#scale-thresholds) | [Real DigitalOcean run](#real-digitalocean-run) | [Extensions](#extensions-spaces--webhook) | [Design decisions](#design-decisions) | [Testing](#testing) | [Configuration](#configuration) | [What I'd do next](#what-id-do-next)
 
 ---
 
@@ -148,7 +148,7 @@ So **one controller sits in front of every worker** and adapts the number of in-
 - **`Retry-After` is global:** all workers pause together, and each keeps its own random jitter so they don't wake in lockstep.
 - **No slot is held while sleeping:** a worker that is backing off never blocks a healthy request.
 
-Benchmark: the same 1,000 items against a fake API with a hidden capacity of 20.
+Benchmark: the same 1,000 items against a fake API that allows at most 20 *concurrent* requests (hidden from the client). [Evidence](docs/benchmarks/adaptive-vs-fixed/).
 
 | Strategy | Time | 429s | Throughput | Lost |
 |---|---|---|---|---|
@@ -169,8 +169,6 @@ The controller settled into the classic AIMD sawtooth just under the hidden capa
 
 **Measured on 500,000 items** (46 MB file, fast fake API, laptop): memory was 59.2 MB at 25% done and 59.6 MB at 100%. All 500,000 were accounted for at a sustained 575 items/s. The 129 MB of results downloaded in 0.29 s with no change in memory. The raw logs are in [`docs/benchmarks/500k/`](docs/benchmarks/500k/).
 
-**Real limits at scale** are the provider's rate limit and the cost, not this service. At 50 concurrent requests and 1 s latency, 500k items take about 2.8 h. Move to multiple machines when a single process's CPU becomes the bottleneck (around 1,000 req/s) or when jobs must survive the loss of the whole machine. At that point: a shared queue, stateless workers, a shared rate budget and Postgres for job state. The internal interfaces stay the same.
-
 ### 3. Nothing is lost, and nothing is paid for twice
 
 | Situation | What happens |
@@ -185,17 +183,33 @@ The controller settled into the classic AIMD sawtooth just under the hidden capa
 
 ---
 
+## Scale thresholds
+
+Where each limit kicks in as a job grows, from first to hit to last:
+
+| Threshold | Where it bites | What to do |
+|---|---|---|
+| **Provider rate limit** | This is the real ceiling. At DigitalOcean's **120 requests/minute** for this account, **500,000 prompts take about 69 hours**, however well the service performs. | Ask for a quota increase, spread the load over multiple keys or accounts, or use DO Batch Inference for workloads that can wait |
+| **Cost** | Grows linearly with tokens. At `mistral-3-14B` prices, 1,000 prompts cost $0.016, so 500k would be about $8. | `MAX_TOKENS` is the main lever |
+| **Single-process CPU** | Measured at 575 items/s on a laptop, with the fake API sharing the machine. A dedicated process should manage somewhere around 1,000 req/s (**an estimate, not measured**). | Scale out: a shared queue, stateless workers, a shared rate budget, and Postgres for job state. The internal interfaces stay the same. |
+| **Machine loss** | Local disk is lost. Spaces holds everything except the last `SPACES_FLUSH_SECONDS` of results. | Multi-machine with shared job state, so another node can take over the job |
+| **Disk** | About 0.5–1 KB per result with real answers, so roughly 250–500 MB for 500k | Rotate or ship results to Spaces |
+| **Memory** | Not a threshold. It stays flat at ~60 MB (measured on 500k items). | – |
+
+---
+
 ## Real DigitalOcean run
 
-The included 1,000-prompt file, run against DigitalOcean Serverless Inference with default settings:
+The included 1,000-prompt file, run against DigitalOcean Serverless Inference with default settings. [Evidence](docs/benchmarks/real-do-run/): all 993 real answers, a progress log, every controller decision, and the rate-limit headers.
 
 | Model | Outcome | Time | Rate limiting | Tokens | Cost |
 |---|---|---|---|---|---|
-| `mistral-3-14B` | **993 ok | 7 bad rows isolated | 0 lost** | 428 s | **765 real 429s**, all recovered | 14,876 in / 67,393 out | **$0.016** |
+| `mistral-3-14B` | **993 ok, 7 bad rows isolated, 0 lost** | 428 s | **765 real 429s**, all recovered | 14,876 in / 67,393 out | **$0.016** |
 
 What the real API taught us, each turned into code and tests:
 
-- **DO's limit is a rate, not a concurrency limit.** The response headers show `x-ratelimit-limit-requests: 120` (about 2 req/s), and 429s carry no `Retry-After`. The controller found that ceiling (2.3 items/s). Rejected requests are free, so the 429s cost nothing.
+- **DO limits requests per minute, not concurrent requests.** The response headers show `x-ratelimit-limit-requests: 120`, and 429s carry no `Retry-After`. After an initial burst allowance (the first ~150 requests went through in ~6 s), throughput **settled at the provider's limit: 2.0 items/s, exactly 120 per minute**. The 2.3 items/s overall average includes that burst. The 429 responses processed no tokens.
+- **Why 765 429s here, but only 6 in the benchmark?** The fake API limits *concurrent* requests, and that is exactly what the controller adjusts, so it nearly eliminated 429s. DigitalOcean limits requests *per minute* instead. A concurrency controller can only react to that kind of limit, not prevent it: even one request at a time, at ~0.5 s latency, is at the limit. So the run still saw 765 429s, all recovered with nothing lost. It is also why **pacing on DO's rate-limit headers** is the next step.
 - **`402 Payment Required`** (before billing was set up) was being treated as a per-item error, so a full run would have failed 993 times. It now **stops the job instantly**.
 - **An unknown model returns `404`**, and so does the spec's old Llama model name. That is now fatal too.
 
@@ -226,7 +240,7 @@ Both are **tested live**, not just mocked.
 | Queue | In-process `asyncio.Queue` | Redis / Celery / Kafka | Enough for one server. Add a shared queue only when going multi-machine. |
 | Concurrency | asyncio, single process | Threads / processes | The work is ~99% network waiting: hundreds of requests on one thread, no locks |
 | Bad input | Pre-flight pass + local validation | Let the API reject it | Never pay for a request that is certain to fail |
-| Managed option | Built on Serverless Inference | [DO Batch Inference](https://docs.digitalocean.com/products/inference/how-to/use-batch-inference/) | Batch Inference is up to 50% cheaper with a 24 h turnaround, but supports only OpenAI and Anthropic models (not the open-source models the spec prioritizes), caps files at 50k requests, and tracks progress by polling. **For OpenAI/Anthropic workloads that can wait a day, use it.** |
+| Managed option | Built on Serverless Inference | [DO Batch Inference](https://docs.digitalocean.com/products/inference/how-to/use-batch-inference/) | Batch Inference is [up to 50% cheaper](https://www.digitalocean.com/products/inference-engine) with a 24 h turnaround, but supports only OpenAI and Anthropic models (not the open-source models the spec prioritizes), caps files at 50k requests, and tracks progress by polling. **For OpenAI/Anthropic workloads that can wait a day, use it.** |
 
 ---
 
@@ -239,8 +253,7 @@ ruff check .
 
 The model API is mocked with `respx`, because a 429 or 500 comes from the *server*. No prompt can trigger one, and a real API won't produce them on demand. Mocks produce exact failures on command, for free, in CI. Every guarantee above has a test. The key ones were also checked by **deliberately breaking the code and watching the matching test fail**.
 
-<details>
-<summary><b>What each test file covers</b></summary>
+**Unit tests (46).** Each component is tested on its own.
 
 | File | Covers |
 |---|---|
@@ -248,11 +261,15 @@ The model API is mocked with `respx`, because a 429 or 500 comes from the *serve
 | `test_inference.py` | Which responses are retried and which aren't, the separate 429 budget, fatal 401/402/403/404, bad URL, full-jitter backoff, no slot held while sleeping, `Retry-After` parsing |
 | `test_workers.py` | Every item handled exactly once, bounded pool, **the reader can't run ahead** (backpressure), a fatal error cancels everything |
 | `test_reader_storage.py` | Streaming, empty/corrupt/non-array files, append and read back, **torn-line repair**, atomic `meta.json` |
+
+**Integration tests (34).** Whole jobs and the HTTP API, end to end.
+
+| File | Covers |
+|---|---|
 | `test_jobs.py` | **succeeded + failed = total with no duplicates**, bad rows never reach the API, a 429 storm loses nothing, fatal errors stop early, **crash resume**, Spaces parts (timer, empty ticks, stale-part cleanup), webhook retries, path traversal |
 | `test_api.py` | The full HTTP flow, the instant `202`, `409` while running, `404`/`400`/`422`, streamed download |
 
 CI ([`ci.yml`](.github/workflows/ci.yml)) runs lint + tests on every push, on Python 3.11, 3.12 and 3.13.
-</details>
 
 ---
 

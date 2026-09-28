@@ -1,0 +1,33 @@
+INFO:     Started server process [55477]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+2026-09-26 15:19:37,708 INFO app.jobs: job 6f9247ca29334f59819cf38628d24f1d: 1000 items, model=llama3-8b-instruct
+2026-09-26 15:19:37,870 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:37,959 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:38,164 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:38,258 INFO app.jobs: item 49 failed (invalid_input): prompt is empty
+2026-09-26 15:19:38,332 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:38,468 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:38,672 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:38,736 INFO app.jobs: item 74 failed (invalid_input): prompt is empty
+2026-09-26 15:19:38,846 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:38,847 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5, pausing 1.0s (Retry-After)
+2026-09-26 15:19:38,913 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:39,958 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:40,104 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:40,269 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:40,369 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:40,524 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:40,525 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:40,577 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:40,720 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:40,874 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:41,034 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:41,040 INFO app.jobs: item 154 failed (invalid_input): item must be a JSON object, got NoneType
+2026-09-26 15:19:41,161 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:41,327 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:41,328 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:41,373 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:41,572 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:41,721 INFO app.rate_limiter: concurrency limit raised to 8

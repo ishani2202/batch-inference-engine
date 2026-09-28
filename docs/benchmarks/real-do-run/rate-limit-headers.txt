@@ -1,0 +1,11 @@
+# Response headers from one DigitalOcean Serverless Inference call (mistral-3-14B), captured with
+# local tooling after the run. 429 responses carried no Retry-After header.
+x-ratelimit-limit-requests: 120
+x-ratelimit-limit-tokens-per-day: 60000000
+x-ratelimit-limit-tokens-per-minute: 2000000
+x-ratelimit-remaining-requests: 93
+x-ratelimit-remaining-tokens-per-day: 6000000
+x-ratelimit-remaining-tokens-per-minute: 2000000
+x-ratelimit-reset-requests: 0
+x-ratelimit-reset-tokens-per-day: 0
+x-ratelimit-reset-tokens-per-minute: 0

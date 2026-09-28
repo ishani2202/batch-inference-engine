@@ -1,0 +1,181 @@
+job c26aead0fafb44f48d21f87dba5fb399 created
+[  running] 0/None (0.0%)  ok=0 failed=0  retries=0 429s=0  limit=None  0.0 items/s
+[  running] 94/1000 (9.4%)  ok=92 failed=2  retries=0 429s=0  limit=32  31.24 items/s
+[  running] 151/1000 (15.1%)  ok=148 failed=3  retries=23 429s=23  limit=1  25.1 items/s
+[  running] 158/1000 (15.8%)  ok=155 failed=3  retries=27 429s=27  limit=1  17.51 items/s
+[  running] 165/1000 (16.5%)  ok=162 failed=3  retries=31 429s=31  limit=2  13.71 items/s
+[  running] 171/1000 (17.1%)  ok=168 failed=3  retries=36 429s=36  limit=2  11.37 items/s
+[  running] 179/1000 (17.9%)  ok=176 failed=3  retries=42 429s=42  limit=2  9.92 items/s
+[  running] 184/1000 (18.4%)  ok=181 failed=3  retries=47 429s=47  limit=2  8.74 items/s
+[  running] 191/1000 (19.1%)  ok=188 failed=3  retries=52 429s=52  limit=1  7.94 items/s
+[  running] 198/1000 (19.8%)  ok=195 failed=3  retries=59 429s=59  limit=1  7.31 items/s
+[  running] 202/1000 (20.2%)  ok=199 failed=3  retries=65 429s=65  limit=1  6.72 items/s
+[  running] 210/1000 (21.0%)  ok=207 failed=3  retries=70 429s=70  limit=1  6.35 items/s
+[  running] 217/1000 (21.7%)  ok=214 failed=3  retries=76 429s=76  limit=2  6.01 items/s
+[  running] 222/1000 (22.2%)  ok=219 failed=3  retries=84 429s=84  limit=1  5.68 items/s
+[  running] 229/1000 (22.9%)  ok=226 failed=3  retries=88 429s=88  limit=3  5.44 items/s
+[  running] 235/1000 (23.5%)  ok=232 failed=3  retries=98 429s=98  limit=1  5.21 items/s
+[  running] 240/1000 (24.0%)  ok=237 failed=3  retries=103 429s=103  limit=2  4.99 items/s
+[  running] 245/1000 (24.5%)  ok=242 failed=3  retries=108 429s=108  limit=2  4.79 items/s
+[  running] 254/1000 (25.4%)  ok=251 failed=3  retries=115 429s=115  limit=2  4.69 items/s
+[  running] 260/1000 (26.0%)  ok=257 failed=3  retries=121 429s=121  limit=1  4.55 items/s
+[  running] 267/1000 (26.7%)  ok=264 failed=3  retries=126 429s=126  limit=1  4.44 items/s
+[  running] 272/1000 (27.2%)  ok=269 failed=3  retries=131 429s=131  limit=1  4.31 items/s
+[  running] 279/1000 (27.9%)  ok=276 failed=3  retries=135 429s=135  limit=2  4.22 items/s
+[  running] 286/1000 (28.6%)  ok=283 failed=3  retries=141 429s=141  limit=1  4.14 items/s
+[  running] 291/1000 (29.1%)  ok=288 failed=3  retries=146 429s=146  limit=2  4.03 items/s
+[  running] 298/1000 (29.8%)  ok=295 failed=3  retries=153 429s=153  limit=2  3.96 items/s
+[  running] 306/1000 (30.6%)  ok=302 failed=4  retries=155 429s=155  limit=2  3.91 items/s
+[  running] 312/1000 (31.2%)  ok=308 failed=4  retries=165 429s=165  limit=1  3.84 items/s
+[  running] 318/1000 (31.8%)  ok=314 failed=4  retries=173 429s=173  limit=1  3.78 items/s
+[  running] 324/1000 (32.4%)  ok=320 failed=4  retries=177 429s=177  limit=1  3.72 items/s
+[  running] 331/1000 (33.1%)  ok=327 failed=4  retries=183 429s=183  limit=1  3.67 items/s
+[  running] 337/1000 (33.7%)  ok=333 failed=4  retries=187 429s=187  limit=2  3.62 items/s
+[  running] 343/1000 (34.3%)  ok=339 failed=4  retries=193 429s=193  limit=1  3.56 items/s
+[  running] 350/1000 (35.0%)  ok=346 failed=4  retries=198 429s=198  limit=2  3.53 items/s
+[  running] 355/1000 (35.5%)  ok=351 failed=4  retries=201 429s=201  limit=2  3.47 items/s
+[  running] 362/1000 (36.2%)  ok=358 failed=4  retries=208 429s=208  limit=1  3.44 items/s
+[  running] 368/1000 (36.8%)  ok=364 failed=4  retries=212 429s=212  limit=2  3.4 items/s
+[  running] 375/1000 (37.5%)  ok=370 failed=5  retries=217 429s=217  limit=2  3.37 items/s
+[  running] 382/1000 (38.2%)  ok=377 failed=5  retries=222 429s=222  limit=2  3.34 items/s
+[  running] 388/1000 (38.8%)  ok=383 failed=5  retries=228 429s=228  limit=1  3.31 items/s
+[  running] 392/1000 (39.2%)  ok=387 failed=5  retries=232 429s=232  limit=2  3.26 items/s
+[  running] 400/1000 (40.0%)  ok=395 failed=5  retries=238 429s=238  limit=1  3.24 items/s
+[  running] 405/1000 (40.5%)  ok=400 failed=5  retries=243 429s=243  limit=1  3.21 items/s
+[  running] 412/1000 (41.2%)  ok=407 failed=5  retries=250 429s=250  limit=1  3.19 items/s
+[  running] 418/1000 (41.8%)  ok=413 failed=5  retries=253 429s=253  limit=3  3.16 items/s
+[  running] 423/1000 (42.3%)  ok=418 failed=5  retries=259 429s=259  limit=2  3.13 items/s
+[  running] 430/1000 (43.0%)  ok=425 failed=5  retries=265 429s=265  limit=2  3.11 items/s
+[  running] 437/1000 (43.7%)  ok=432 failed=5  retries=272 429s=272  limit=1  3.09 items/s
+[  running] 443/1000 (44.3%)  ok=438 failed=5  retries=276 429s=276  limit=2  3.07 items/s
+[  running] 449/1000 (44.9%)  ok=444 failed=5  retries=283 429s=283  limit=1  3.05 items/s
+[  running] 456/1000 (45.6%)  ok=451 failed=5  retries=288 429s=288  limit=2  3.03 items/s
+[  running] 461/1000 (46.1%)  ok=456 failed=5  retries=295 429s=295  limit=2  3.01 items/s
+[  running] 466/1000 (46.6%)  ok=461 failed=5  retries=297 429s=297  limit=3  2.98 items/s
+[  running] 474/1000 (47.4%)  ok=469 failed=5  retries=304 429s=304  limit=1  2.97 items/s
+[  running] 479/1000 (47.9%)  ok=474 failed=5  retries=309 429s=309  limit=1  2.95 items/s
+[  running] 486/1000 (48.6%)  ok=481 failed=5  retries=314 429s=314  limit=1  2.94 items/s
+[  running] 492/1000 (49.2%)  ok=487 failed=5  retries=319 429s=319  limit=1  2.92 items/s
+[  running] 499/1000 (49.9%)  ok=494 failed=5  retries=325 429s=325  limit=1  2.91 items/s
+[  running] 503/1000 (50.3%)  ok=498 failed=5  retries=332 429s=332  limit=1  2.88 items/s
+[  running] 511/1000 (51.1%)  ok=506 failed=5  retries=337 429s=337  limit=1  2.88 items/s
+[  running] 517/1000 (51.7%)  ok=512 failed=5  retries=342 429s=342  limit=2  2.87 items/s
+[  running] 524/1000 (52.4%)  ok=519 failed=5  retries=347 429s=347  limit=1  2.86 items/s
+[  running] 531/1000 (53.1%)  ok=526 failed=5  retries=355 429s=355  limit=1  2.85 items/s
+[  running] 536/1000 (53.6%)  ok=531 failed=5  retries=359 429s=359  limit=1  2.83 items/s
+[  running] 540/1000 (54.0%)  ok=535 failed=5  retries=359 429s=359  limit=3  2.81 items/s
+[  running] 548/1000 (54.8%)  ok=543 failed=5  retries=365 429s=365  limit=2  2.8 items/s
+[  running] 555/1000 (55.5%)  ok=550 failed=5  retries=370 429s=370  limit=1  2.8 items/s
+[  running] 561/1000 (56.1%)  ok=556 failed=5  retries=375 429s=375  limit=1  2.78 items/s
+[  running] 567/1000 (56.7%)  ok=562 failed=5  retries=381 429s=381  limit=1  2.77 items/s
+[  running] 573/1000 (57.3%)  ok=568 failed=5  retries=385 429s=385  limit=1  2.76 items/s
+[  running] 579/1000 (57.9%)  ok=574 failed=5  retries=392 429s=392  limit=1  2.75 items/s
+[  running] 585/1000 (58.5%)  ok=580 failed=5  retries=396 429s=396  limit=1  2.74 items/s
+[  running] 591/1000 (59.1%)  ok=586 failed=5  retries=403 429s=403  limit=1  2.73 items/s
+[  running] 597/1000 (59.7%)  ok=592 failed=5  retries=408 429s=408  limit=2  2.72 items/s
+[  running] 604/1000 (60.4%)  ok=599 failed=5  retries=414 429s=414  limit=2  2.71 items/s
+[  running] 610/1000 (61.0%)  ok=605 failed=5  retries=418 429s=418  limit=1  2.7 items/s
+[  running] 615/1000 (61.5%)  ok=610 failed=5  retries=423 429s=423  limit=1  2.69 items/s
+[  running] 622/1000 (62.2%)  ok=617 failed=5  retries=429 429s=429  limit=1  2.69 items/s
+[  running] 630/1000 (63.0%)  ok=625 failed=5  retries=435 429s=435  limit=1  2.69 items/s
+[  running] 637/1000 (63.7%)  ok=631 failed=6  retries=441 429s=441  limit=1  2.68 items/s
+[  running] 642/1000 (64.2%)  ok=636 failed=6  retries=444 429s=444  limit=2  2.67 items/s
+[  running] 649/1000 (64.9%)  ok=643 failed=6  retries=450 429s=450  limit=2  2.66 items/s
+[  running] 656/1000 (65.6%)  ok=650 failed=6  retries=456 429s=456  limit=1  2.66 items/s
+[  running] 662/1000 (66.2%)  ok=656 failed=6  retries=463 429s=463  limit=2  2.65 items/s
+[  running] 667/1000 (66.7%)  ok=661 failed=6  retries=469 429s=469  limit=2  2.64 items/s
+[  running] 673/1000 (67.3%)  ok=667 failed=6  retries=475 429s=475  limit=1  2.63 items/s
+[  running] 680/1000 (68.0%)  ok=674 failed=6  retries=484 429s=484  limit=1  2.63 items/s
+[  running] 687/1000 (68.7%)  ok=681 failed=6  retries=487 429s=487  limit=1  2.63 items/s
+[  running] 693/1000 (69.3%)  ok=687 failed=6  retries=493 429s=493  limit=1  2.62 items/s
+[  running] 700/1000 (70.0%)  ok=694 failed=6  retries=498 429s=498  limit=2  2.62 items/s
+[  running] 706/1000 (70.6%)  ok=700 failed=6  retries=505 429s=505  limit=1  2.61 items/s
+[  running] 712/1000 (71.2%)  ok=706 failed=6  retries=512 429s=512  limit=1  2.6 items/s
+[  running] 717/1000 (71.7%)  ok=711 failed=6  retries=516 429s=516  limit=1  2.59 items/s
+[  running] 724/1000 (72.4%)  ok=718 failed=6  retries=521 429s=521  limit=2  2.59 items/s
+[  running] 729/1000 (72.9%)  ok=723 failed=6  retries=530 429s=530  limit=1  2.58 items/s
+[  running] 736/1000 (73.6%)  ok=730 failed=6  retries=538 429s=538  limit=1  2.58 items/s
+[  running] 742/1000 (74.2%)  ok=736 failed=6  retries=544 429s=544  limit=1  2.57 items/s
+[  running] 748/1000 (74.8%)  ok=742 failed=6  retries=548 429s=548  limit=2  2.56 items/s
+[  running] 755/1000 (75.5%)  ok=749 failed=6  retries=553 429s=553  limit=2  2.56 items/s
+[  running] 761/1000 (76.1%)  ok=755 failed=6  retries=559 429s=559  limit=2  2.56 items/s
+[  running] 768/1000 (76.8%)  ok=762 failed=6  retries=567 429s=567  limit=2  2.55 items/s
+[  running] 774/1000 (77.4%)  ok=768 failed=6  retries=572 429s=572  limit=1  2.55 items/s
+[  running] 780/1000 (78.0%)  ok=774 failed=6  retries=576 429s=576  limit=1  2.54 items/s
+[  running] 787/1000 (78.7%)  ok=781 failed=6  retries=579 429s=579  limit=3  2.54 items/s
+[  running] 793/1000 (79.3%)  ok=787 failed=6  retries=585 429s=585  limit=1  2.54 items/s
+[  running] 799/1000 (79.9%)  ok=793 failed=6  retries=591 429s=591  limit=1  2.53 items/s
+[  running] 804/1000 (80.4%)  ok=798 failed=6  retries=595 429s=595  limit=1  2.52 items/s
+[  running] 811/1000 (81.1%)  ok=805 failed=6  retries=598 429s=598  limit=3  2.52 items/s
+[  running] 818/1000 (81.8%)  ok=812 failed=6  retries=610 429s=610  limit=2  2.52 items/s
+[  running] 825/1000 (82.5%)  ok=819 failed=6  retries=615 429s=615  limit=3  2.52 items/s
+[  running] 831/1000 (83.1%)  ok=825 failed=6  retries=622 429s=622  limit=2  2.51 items/s
+[  running] 837/1000 (83.7%)  ok=831 failed=6  retries=628 429s=628  limit=1  2.51 items/s
+[  running] 843/1000 (84.3%)  ok=837 failed=6  retries=633 429s=633  limit=1  2.5 items/s
+[  running] 850/1000 (85.0%)  ok=844 failed=6  retries=638 429s=638  limit=2  2.5 items/s
+[  running] 855/1000 (85.5%)  ok=849 failed=6  retries=646 429s=646  limit=1  2.49 items/s
+[  running] 861/1000 (86.1%)  ok=855 failed=6  retries=650 429s=650  limit=1  2.49 items/s
+[  running] 868/1000 (86.8%)  ok=862 failed=6  retries=654 429s=654  limit=2  2.49 items/s
+[  running] 873/1000 (87.3%)  ok=867 failed=6  retries=660 429s=660  limit=2  2.48 items/s
+[  running] 879/1000 (87.9%)  ok=873 failed=6  retries=667 429s=667  limit=2  2.48 items/s
+[  running] 887/1000 (88.7%)  ok=881 failed=6  retries=673 429s=673  limit=1  2.48 items/s
+[  running] 895/1000 (89.5%)  ok=889 failed=6  retries=678 429s=678  limit=2  2.48 items/s
+[  running] 901/1000 (90.1%)  ok=895 failed=6  retries=686 429s=686  limit=1  2.48 items/s
+[  running] 906/1000 (90.6%)  ok=900 failed=6  retries=691 429s=691  limit=1  2.47 items/s
+[  running] 912/1000 (91.2%)  ok=906 failed=6  retries=697 429s=697  limit=1  2.47 items/s
+[  running] 918/1000 (91.8%)  ok=912 failed=6  retries=700 429s=700  limit=2  2.46 items/s
+[  running] 926/1000 (92.6%)  ok=920 failed=6  retries=703 429s=703  limit=3  2.46 items/s
+[  running] 932/1000 (93.2%)  ok=926 failed=6  retries=713 429s=713  limit=1  2.46 items/s
+[  running] 938/1000 (93.8%)  ok=932 failed=6  retries=717 429s=717  limit=2  2.46 items/s
+[  running] 947/1000 (94.7%)  ok=940 failed=7  retries=722 429s=722  limit=1  2.46 items/s
+[  running] 953/1000 (95.3%)  ok=946 failed=7  retries=728 429s=728  limit=1  2.46 items/s
+[  running] 960/1000 (96.0%)  ok=953 failed=7  retries=733 429s=733  limit=2  2.46 items/s
+[  running] 965/1000 (96.5%)  ok=958 failed=7  retries=741 429s=741  limit=1  2.45 items/s
+[  running] 971/1000 (97.1%)  ok=964 failed=7  retries=748 429s=748  limit=2  2.45 items/s
+[  running] 976/1000 (97.6%)  ok=969 failed=7  retries=755 429s=755  limit=1  2.44 items/s
+[  running] 983/1000 (98.3%)  ok=976 failed=7  retries=758 429s=758  limit=3  2.44 items/s
+[  running] 989/1000 (98.9%)  ok=982 failed=7  retries=764 429s=764  limit=2  2.44 items/s
+[  running] 992/1000 (99.2%)  ok=985 failed=7  retries=765 429s=765  limit=3  2.43 items/s
+[  running] 998/1000 (99.8%)  ok=991 failed=7  retries=765 429s=765  limit=4  2.42 items/s
+[  running] 999/1000 (99.9%)  ok=992 failed=7  retries=765 429s=765  limit=5  2.41 items/s
+[  running] 999/1000 (99.9%)  ok=992 failed=7  retries=765 429s=765  limit=5  2.39 items/s
+[  running] 999/1000 (99.9%)  ok=992 failed=7  retries=765 429s=765  limit=5  2.37 items/s
+[  running] 999/1000 (99.9%)  ok=992 failed=7  retries=765 429s=765  limit=5  2.36 items/s
+[  running] 999/1000 (99.9%)  ok=992 failed=7  retries=765 429s=765  limit=5  2.34 items/s
+[completed] 1000/1000 (100.0%)  ok=993 failed=7  retries=765 429s=765  limit=5  2.33 items/s
+{
+  "job_id": "c26aead0fafb44f48d21f87dba5fb399",
+  "status": "completed",
+  "error": null,
+  "input_file": "sample_batch.json",
+  "model": "mistral-3-14B",
+  "created_at": "2026-09-27T03:40:05+00:00",
+  "started_at": "2026-09-27T03:40:05+00:00",
+  "finished_at": "2026-09-27T03:47:14+00:00",
+  "resumed": false,
+  "progress": {
+    "total": 1000,
+    "done": 1000,
+    "succeeded": 993,
+    "failed": 7,
+    "percent": 100.0
+  },
+  "performance": {
+    "elapsed_seconds": 428.35,
+    "items_per_second": 2.33,
+    "retries": 765,
+    "rate_limited_429s": 765,
+    "concurrency_limit": 5,
+    "peak_concurrency": 32
+  },
+  "tokens": {
+    "input": 14876,
+    "output": 67393
+  },
+  "estimated_cost_usd": 0.016454,
+  "errors_by_type": {
+    "invalid_input": 7
+  }
+}
+saved c26aead0fafb44f48d21f87dba5fb399-results.json
+saved c26aead0fafb44f48d21f87dba5fb399-errors.json

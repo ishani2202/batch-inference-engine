@@ -1,0 +1,41 @@
+{
+  "job_id": "2aebef5b68884c339094aee5764c5f80",
+  "status": "completed",
+  "error": null,
+  "input_file": "sample_batch.json",
+  "model": "llama3-8b-instruct",
+  "created_at": "2026-09-26T19:10:28+00:00",
+  "started_at": "2026-09-26T19:10:28+00:00",
+  "finished_at": "2026-09-26T19:10:38+00:00",
+  "resumed": false,
+  "progress": {
+    "total": 1000,
+    "done": 1000,
+    "succeeded": 993,
+    "failed": 7,
+    "percent": 100.0
+  },
+  "performance": {
+    "elapsed_seconds": 10.43,
+    "items_per_second": 95.92,
+    "retries": 27,
+    "rate_limited_429s": 6,
+    "concurrency_limit": 20,
+    "peak_concurrency": 21
+  },
+  "tokens": {
+    "input": 15584,
+    "output": 11916
+  },
+  "estimated_cost_usd": 0.0055,
+  "errors_by_type": {
+    "invalid_input": 7
+  },
+  "resume": {
+    "input_path": "/Users/ishaniarya/Desktop/digocean_takehome/data/sample_batch.json",
+    "webhook_url": null,
+    "retries": 27,
+    "rate_limited_429s": 6,
+    "spaces": {}
+  }
+}

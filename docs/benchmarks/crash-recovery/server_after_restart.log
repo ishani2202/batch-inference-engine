@@ -1,0 +1,147 @@
+INFO:     Started server process [55514]
+INFO:     Waiting for application startup.
+2026-09-26 15:19:42,914 INFO app.jobs: resuming job 6f9247ca29334f59819cf38628d24f1d after restart
+2026-09-26 15:19:42,914 INFO app: resumed 1 unfinished job(s) from disk
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+2026-09-26 15:19:42,916 INFO app.jobs: job 6f9247ca29334f59819cf38628d24f1d: resuming, 159/1000 items already done
+2026-09-26 15:19:42,916 INFO app.jobs: job 6f9247ca29334f59819cf38628d24f1d: 1000 items, model=llama3-8b-instruct
+2026-09-26 15:19:43,050 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5, pausing 1.0s (Retry-After)
+2026-09-26 15:19:43,144 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:44,153 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:44,287 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:44,492 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:44,619 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:44,759 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:44,761 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:44,870 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:45,029 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:45,144 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:45,299 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:45,434 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:45,636 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:45,637 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5, pausing 1.0s (Retry-After)
+2026-09-26 15:19:45,677 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:46,720 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:46,871 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:47,075 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:47,211 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:47,373 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:47,374 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:47,449 INFO app.jobs: item 331 failed (invalid_input): item must be a JSON object, got int
+2026-09-26 15:19:47,480 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:47,599 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:47,822 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:47,946 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:48,105 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:48,241 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:48,242 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:48,338 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:48,478 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:48,614 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:48,779 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:48,856 INFO app.jobs: item 404 failed (invalid_input): missing or non-string 'prompt' field
+2026-09-26 15:19:48,934 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:49,067 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:49,068 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:49,180 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:49,327 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:49,483 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:49,631 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:49,783 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:49,941 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:49,942 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:50,043 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:50,166 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:50,378 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:50,566 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:50,736 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:50,836 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:50,837 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:50,973 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:51,074 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:51,287 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:51,447 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:51,577 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:51,767 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:51,768 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:51,843 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:51,977 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:52,129 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:52,312 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:52,519 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:52,703 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:52,705 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:52,787 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:52,948 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:53,084 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:53,220 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:53,406 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:53,563 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:53,564 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:53,602 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:53,667 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:53,841 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:53,852 INFO app.jobs: item 666 failed (invalid_input): missing or non-string 'prompt' field
+2026-09-26 15:19:54,047 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:54,210 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:54,353 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:54,354 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5, pausing 1.0s (Retry-After)
+2026-09-26 15:19:54,441 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:55,429 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:55,584 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:55,760 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:55,892 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:56,053 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:56,054 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5, pausing 1.0s (Retry-After)
+2026-09-26 15:19:56,173 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:57,142 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:57,286 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:57,485 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:57,593 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:57,730 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:57,731 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:57,812 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:57,991 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:58,121 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:58,335 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:58,514 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:58,633 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:58,634 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:58,690 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:58,820 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:59,002 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:19:59,147 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:19:59,320 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:19:59,469 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:19:59,470 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:19:59,545 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:19:59,710 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:19:59,838 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:20:00,039 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:20:00,169 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:20:00,309 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:20:00,310 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5, pausing 1.0s (Retry-After)
+2026-09-26 15:20:00,395 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:20:01,375 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:20:01,490 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:20:01,736 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:20:01,893 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:20:02,048 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:20:02,049 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:20:02,179 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:20:02,205 INFO app.jobs: item 970 failed (invalid_input): prompt is 60000 chars, over the 32000 limit
+2026-09-26 15:20:02,268 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:20:02,410 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:20:02,585 INFO app.rate_limiter: concurrency limit raised to 9
+2026-09-26 15:20:02,715 INFO app.rate_limiter: concurrency limit raised to 10
+2026-09-26 15:20:02,825 INFO app.rate_limiter: concurrency limit raised to 11
+2026-09-26 15:20:02,826 INFO app.rate_limiter: 429 received: concurrency limit 11 -> 5
+2026-09-26 15:20:02,954 INFO app.rate_limiter: concurrency limit raised to 6
+2026-09-26 15:20:03,098 INFO app.rate_limiter: concurrency limit raised to 7
+2026-09-26 15:20:03,280 INFO app.rate_limiter: concurrency limit raised to 8
+2026-09-26 15:20:04,340 INFO app.jobs: job 6f9247ca29334f59819cf38628d24f1d completed: 993 succeeded, 7 failed, 42 retries, 23 x 429 in 21.4s
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [55514]

@@ -1,0 +1,1273 @@
+2026-09-26 23:40:05,752 INFO app.jobs: job c26aead0fafb44f48d21f87dba5fb399: 1000 items, model=mistral-3-14B
+2026-09-26 23:40:09,414 INFO app.rate_limiter: 429 received: concurrency limit 32 -> 16
+2026-09-26 23:40:09,784 INFO app.rate_limiter: concurrency limit raised to 17
+2026-09-26 23:40:09,966 INFO app.rate_limiter: 429 received: concurrency limit 17 -> 8
+2026-09-26 23:40:10,310 INFO app.rate_limiter: 429 received: concurrency limit 8 -> 4
+2026-09-26 23:40:10,489 INFO app.rate_limiter: 429 received: concurrency limit 4 -> 2
+2026-09-26 23:40:10,669 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:11,207 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:11,386 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:12,036 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:12,494 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:40:12,613 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:40:12,918 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:13,074 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:13,753 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:14,331 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:40:14,510 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:40:14,876 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:15,225 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:15,403 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:15,585 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:15,760 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:15,936 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:16,477 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:16,655 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:17,315 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:17,843 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:18,062 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:18,218 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:18,557 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:18,709 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:19,316 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:19,808 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:19,847 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:19,984 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:20,678 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:20,843 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:21,155 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:21,294 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:21,500 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:21,633 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:22,341 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:22,794 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:40:22,996 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:40:23,104 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:23,262 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:23,777 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:23,943 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:24,284 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:24,418 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:24,797 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:24,963 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:25,721 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:25,845 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:26,197 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:26,358 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:26,604 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:27,439 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:40:27,564 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:40:28,180 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:28,308 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:28,793 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:29,642 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:40:29,794 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:40:30,190 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:30,466 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:30,497 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:30,657 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:31,004 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:31,180 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:31,716 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:32,255 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:40:32,430 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:40:32,608 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:32,789 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:33,145 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:33,333 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:33,624 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:33,777 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:34,694 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:34,829 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:35,031 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:35,147 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:35,836 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:36,449 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:40:36,623 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:40:36,829 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:37,339 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:37,521 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:37,701 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:37,914 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:38,241 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:38,419 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:38,598 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:39,008 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:39,132 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:39,553 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:39,718 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:39,904 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:40,046 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:40,772 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:41,239 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:40:41,309 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:40:41,714 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:41,857 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:42,096 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:42,214 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:42,411 INFO app.rate_limiter: 429 received: concurrency limit 1 -> 1
+2026-09-26 23:40:42,883 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:43,084 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:43,333 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:43,449 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:43,915 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:44,074 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:44,460 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:44,603 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:45,020 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:45,157 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:45,485 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:45,688 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:45,975 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:46,094 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:46,454 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:46,594 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:47,253 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:47,759 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:40:47,918 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:40:48,594 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:48,759 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:49,068 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:49,237 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:49,443 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:49,580 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:49,888 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:50,042 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:50,245 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:50,339 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:50,531 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:50,707 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:50,823 INFO app.rate_limiter: 429 received: concurrency limit 1 -> 1
+2026-09-26 23:40:51,188 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:51,307 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:52,026 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:52,301 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:52,482 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:52,660 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:53,196 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:53,374 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:53,728 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:54,268 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:40:54,443 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:40:54,648 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:54,802 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:55,451 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:55,584 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:56,271 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:57,077 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:40:57,208 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:40:57,580 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:58,115 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:40:58,294 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:40:58,307 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:58,471 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:58,692 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:59,007 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:59,362 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:40:59,543 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:40:59,741 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:00,584 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:00,770 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:00,861 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:00,987 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:01,248 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:01,369 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:02,067 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:02,224 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:02,481 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:02,603 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:02,994 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:03,137 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:03,782 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:04,328 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:04,751 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:05,658 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:05,778 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:06,353 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:06,504 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:06,683 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:06,830 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:07,533 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:07,682 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:07,988 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:08,136 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:08,469 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:08,592 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:08,933 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:09,352 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:09,467 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:09,957 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:10,160 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:10,366 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:10,540 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:11,164 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:11,955 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:12,108 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:12,228 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:12,388 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:12,928 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:13,078 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:13,579 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:13,856 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:14,214 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:14,750 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:14,753 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:15,283 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:15,462 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:16,177 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:16,356 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:16,608 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:16,752 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:17,007 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:17,215 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:17,820 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:18,402 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:18,522 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:18,736 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:18,903 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:19,311 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:19,489 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:19,668 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:19,847 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:20,381 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:20,559 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:20,917 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:21,097 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:21,810 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:22,913 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:23,525 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:23,784 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:23,932 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:24,191 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:24,292 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:25,215 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:25,809 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:25,928 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:26,147 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:26,258 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:26,559 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:26,678 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:26,804 INFO app.rate_limiter: 429 received: concurrency limit 1 -> 1
+2026-09-26 23:41:27,263 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:27,463 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:27,980 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:28,152 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:28,296 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:28,492 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:28,648 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:28,757 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:29,209 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:29,341 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:29,619 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:29,823 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:30,254 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:30,422 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:31,155 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:31,769 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:32,007 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:32,509 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:32,619 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:33,190 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:33,728 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:34,125 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:34,273 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:34,464 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:34,593 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:34,876 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:35,036 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:35,299 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:35,475 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:35,654 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:35,834 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:36,546 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:37,087 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:37,261 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:37,439 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:37,617 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:38,157 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:38,283 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:38,676 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:39,222 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:39,225 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:40,032 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:40,248 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:40,409 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:40,578 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:41,007 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:41,184 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:41,363 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:41,543 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:42,079 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:42,257 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:42,612 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:42,803 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:43,148 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:43,805 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:43,997 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:44,139 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:44,600 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:44,747 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:44,955 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:45,183 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:45,798 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:46,617 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:46,743 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:46,828 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:46,958 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:47,643 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:48,362 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:48,480 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:48,753 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:48,914 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:49,176 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:49,722 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:49,847 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:50,068 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:50,202 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:51,021 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:51,224 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:51,633 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:51,752 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:52,249 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:52,762 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:52,877 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:53,068 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:53,715 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:54,606 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:54,731 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:55,218 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:55,368 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:55,749 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:55,935 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:56,543 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:57,292 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:57,482 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:57,650 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:57,839 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:58,024 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:41:58,725 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:41:59,261 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:41:59,265 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:41:59,923 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:00,096 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:00,347 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:00,489 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:01,010 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:01,162 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:01,601 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:02,269 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:02,446 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:02,624 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:02,805 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:03,159 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:03,338 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:03,519 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:03,696 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:04,589 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:04,766 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:05,423 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:06,301 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:06,473 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:06,527 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:06,679 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:07,210 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:07,697 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:08,121 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:08,248 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:08,416 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:08,559 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:08,753 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:08,913 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:09,323 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:09,454 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:10,169 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:10,775 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:10,908 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:10,999 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:11,125 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:12,114 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:12,259 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:12,524 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:12,728 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:13,359 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:13,920 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:14,050 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:14,074 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:14,194 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:14,777 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:14,937 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:15,494 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:15,619 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:15,902 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:16,083 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:16,269 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:16,416 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:17,133 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:18,049 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:18,189 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:18,472 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:18,649 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:18,829 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:19,007 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:19,541 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:19,722 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:20,078 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:20,257 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:20,614 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:21,419 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:21,671 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:21,764 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:21,884 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:22,161 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:22,388 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:22,698 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:22,852 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:23,551 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:23,692 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:23,977 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:24,155 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:24,337 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:24,513 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:24,871 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:25,048 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:25,229 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:25,766 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:25,941 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:26,120 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:26,299 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:26,654 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:26,869 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:27,254 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:27,407 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:27,932 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:28,043 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:28,909 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:29,596 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:29,731 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:29,963 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:30,126 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:30,306 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:30,450 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:30,968 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:31,117 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:31,337 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:31,480 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:31,795 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:31,955 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:32,492 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:32,645 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:32,973 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:33,088 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:33,721 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:34,142 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:34,209 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:34,864 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:35,036 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:35,274 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:35,424 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:35,658 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:35,813 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:36,076 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:36,184 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:36,665 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:36,903 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:37,059 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:37,230 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:37,959 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:38,237 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:38,369 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:38,561 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:39,046 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:39,197 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:39,535 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:39,692 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:40,098 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:41,352 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:42,601 INFO app.rate_limiter: concurrency limit raised to 4
+2026-09-26 23:42:42,783 INFO app.rate_limiter: 429 received: concurrency limit 4 -> 2
+2026-09-26 23:42:43,239 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:43,408 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:43,662 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:43,864 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:44,322 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:44,482 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:44,738 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:44,873 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:45,173 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:45,334 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:45,621 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:45,939 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:46,475 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:46,654 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:47,010 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:47,189 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:47,545 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:47,723 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:48,441 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:49,165 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:49,554 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:49,668 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:49,829 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:50,310 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:50,436 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:50,923 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:51,046 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:51,276 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:51,397 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:52,067 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:52,197 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:52,864 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:53,294 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:53,468 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:53,612 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:53,720 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:54,457 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:54,595 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:55,013 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:55,141 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:55,352 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:55,471 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:56,148 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:56,726 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:42:56,841 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:42:56,982 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:57,143 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:57,538 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:57,655 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:58,049 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:58,169 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:58,987 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:59,118 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:42:59,332 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:42:59,474 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:00,186 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:00,939 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:01,210 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:01,391 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:01,569 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:01,747 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:01,925 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:02,461 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:02,639 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:02,823 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:02,996 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:03,710 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:04,410 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:04,531 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:04,549 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:04,701 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:05,202 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:05,338 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:06,068 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:06,206 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:06,482 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:07,051 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:07,385 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:07,767 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:08,090 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:08,276 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:08,447 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:08,805 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:08,983 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:09,347 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:09,514 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:09,886 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:10,045 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:10,336 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:10,499 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:10,738 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:10,900 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:11,282 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:11,448 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:11,641 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:11,761 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:12,014 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:12,138 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:12,885 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:12,997 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:13,560 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:14,088 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:14,187 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:14,920 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:15,038 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:17,117 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:17,958 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:18,482 INFO app.rate_limiter: concurrency limit raised to 4
+2026-09-26 23:43:18,653 INFO app.rate_limiter: 429 received: concurrency limit 4 -> 2
+2026-09-26 23:43:18,854 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:19,468 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:19,595 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:19,863 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:20,028 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:20,416 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:20,573 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:20,927 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:21,754 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:21,945 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:22,064 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:22,269 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:23,040 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:23,218 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:23,407 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:23,575 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:23,933 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:24,110 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:24,467 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:24,644 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:25,180 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:25,667 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:25,675 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:26,205 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:26,408 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:26,868 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:27,071 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:27,374 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:27,523 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:27,655 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:27,930 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:28,180 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:28,358 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:28,896 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:29,074 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:29,264 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:29,439 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:29,966 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:30,143 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:30,716 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:31,718 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:31,972 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:32,142 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:32,277 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:32,704 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:32,818 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:33,523 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:33,728 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:33,849 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:33,978 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:34,190 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:34,333 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:34,651 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:34,766 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:35,162 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:35,313 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:35,534 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:35,670 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:36,463 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:36,605 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:37,211 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:38,028 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:38,182 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:38,192 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:38,304 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:38,599 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:38,733 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:39,872 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:40,236 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:40,349 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:40,587 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:40,748 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:40,878 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:40,990 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:41,158 INFO app.rate_limiter: 429 received: concurrency limit 1 -> 1
+2026-09-26 23:43:41,974 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:42,158 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:42,341 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:42,482 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:42,664 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:42,806 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:43,253 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:43,482 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:43,762 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:43,928 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:44,183 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:44,363 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:45,081 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:45,971 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:46,150 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:46,508 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:46,686 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:47,230 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:47,394 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:47,738 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:47,865 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:48,212 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:48,378 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:48,970 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:49,137 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:49,541 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:50,571 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:50,756 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:50,935 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:51,115 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:51,652 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:51,829 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:52,189 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:52,436 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:52,570 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:52,865 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:53,194 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:53,570 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:53,662 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:53,879 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:54,478 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:54,616 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:55,272 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:55,790 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:55,902 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:56,075 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:56,215 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:56,632 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:56,790 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:57,139 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:57,277 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:57,952 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:58,762 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:43:59,074 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:43:59,115 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:59,273 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:59,475 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:43:59,609 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:43:59,980 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:00,118 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:00,925 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:01,080 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:01,724 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:02,213 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:02,345 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:02,460 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:02,596 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:03,131 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:03,254 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:03,832 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:03,993 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:04,239 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:04,393 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:04,933 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:05,057 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:05,729 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:06,429 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:06,609 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:06,627 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:06,788 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:07,321 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:07,499 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:08,216 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:08,691 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:08,812 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:09,113 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:09,363 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:09,783 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:10,290 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:10,416 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:10,633 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:10,797 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:11,395 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:12,108 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:12,131 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:12,288 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:12,478 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:12,644 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:13,023 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:13,180 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:13,536 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:13,715 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:14,081 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:14,213 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:14,502 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:14,626 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:15,268 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:15,444 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:15,647 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:15,785 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:16,091 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:16,232 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:16,505 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:16,624 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:17,167 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:17,280 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:18,069 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:18,529 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:18,610 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:19,296 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:19,422 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:19,815 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:19,949 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:20,205 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:20,334 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:20,973 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:21,083 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:21,399 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:21,649 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:21,784 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:21,957 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:22,583 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:22,959 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:23,073 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:23,401 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:23,524 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:23,882 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:23,993 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:24,816 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:24,957 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:25,637 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:26,345 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:26,510 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:26,536 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:27,152 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:27,292 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:27,608 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:27,790 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:27,980 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:28,144 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:28,897 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:29,932 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:30,183 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:31,018 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:31,398 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:31,523 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:32,162 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:32,837 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:33,152 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:33,371 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:33,688 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:33,867 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:34,045 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:34,578 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:35,116 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:35,295 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:35,488 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:35,653 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:36,211 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:36,336 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:36,706 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:36,853 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:37,090 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:37,208 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:37,458 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:37,572 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:38,043 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:38,205 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:38,830 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:38,963 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:39,145 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:39,318 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:39,963 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:40,773 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:40,918 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:41,839 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:42,007 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:42,638 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:43,092 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:43,207 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:43,415 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:43,541 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:44,250 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:44,415 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:45,061 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:45,467 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:45,504 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:45,959 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:46,064 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:46,442 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:46,559 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:46,955 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:47,090 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:47,865 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:48,017 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:48,513 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:49,096 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:49,099 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:49,270 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:49,447 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:49,627 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:49,984 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:50,162 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:50,527 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:50,699 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:50,905 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:51,057 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:51,852 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:51,979 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:52,408 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:52,594 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:52,852 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:52,963 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:53,141 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:53,612 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:53,752 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:53,950 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:54,038 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:54,172 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:54,437 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:54,754 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:55,127 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:55,291 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:56,005 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:56,543 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:56,743 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:56,903 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:57,332 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:57,445 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:57,755 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:57,935 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:44:58,441 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:44:58,957 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:44:59,083 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:44:59,838 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:00,051 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:00,359 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:00,563 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:00,749 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:00,903 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:01,102 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:01,220 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:01,776 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:01,948 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:02,138 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:02,269 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:02,476 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:02,605 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:03,431 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:03,552 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:03,875 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:04,026 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:04,261 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:04,419 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:05,079 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:05,494 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:05,619 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:05,845 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:05,962 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:06,096 INFO app.rate_limiter: 429 received: concurrency limit 1 -> 1
+2026-09-26 23:45:06,395 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:06,511 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:07,385 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:07,523 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:07,942 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:08,458 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:08,570 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:08,968 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:09,080 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:09,684 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:09,905 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:10,310 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:10,592 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:11,308 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:12,023 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:12,202 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:12,204 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:12,379 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:12,557 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:13,360 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:13,484 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:13,870 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:14,117 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:14,656 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:15,360 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:15,513 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:15,791 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:16,107 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:16,643 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:17,539 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:17,717 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:18,101 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:18,251 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:18,795 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:18,938 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:19,172 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:19,408 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:19,534 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:19,660 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:19,976 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:20,138 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:20,808 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:20,972 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:21,188 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:21,336 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:21,962 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:22,185 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:22,770 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:23,355 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:23,478 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:23,702 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:23,822 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:24,533 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:25,468 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:25,581 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:25,851 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:25,987 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:26,618 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:27,446 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:27,608 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:27,846 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:27,960 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:28,335 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:28,492 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:28,890 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:29,035 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:29,437 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:29,555 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:29,957 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:30,176 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:30,533 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:30,979 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:31,120 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:31,401 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:31,562 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:31,982 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:32,161 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:32,873 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:33,409 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:33,588 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:33,976 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:34,658 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:34,849 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:34,860 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:34,958 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:35,337 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:35,459 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:36,407 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:36,563 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:36,816 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:37,189 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:37,728 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:38,270 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:38,443 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:38,620 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:38,803 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:39,338 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:39,520 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:40,073 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:40,599 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:40,725 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:41,292 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:41,404 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:41,818 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:41,973 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:42,362 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:42,489 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:42,713 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:42,847 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:43,186 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:43,339 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:43,987 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:44,800 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:44,922 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:45,475 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:45,743 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:45,949 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:46,074 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:46,304 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:46,422 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:46,553 INFO app.rate_limiter: 429 received: concurrency limit 1 -> 1
+2026-09-26 23:45:47,068 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:47,212 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:47,895 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:48,063 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:48,308 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:48,419 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:49,112 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:50,026 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:50,266 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:50,400 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:50,544 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:50,689 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:50,862 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:51,043 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:51,241 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:51,920 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:52,341 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:52,535 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:52,760 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:52,900 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:53,164 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:53,444 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:54,007 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:54,690 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:54,869 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:54,895 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:55,047 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:55,762 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:55,938 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:56,117 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:56,313 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:56,998 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:57,725 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:45:57,838 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:45:57,962 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:58,154 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:58,313 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:58,474 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:58,895 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:45:59,072 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:45:59,963 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:00,680 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:00,856 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:01,035 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:01,390 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:01,569 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:01,867 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:02,187 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:02,309 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:02,580 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:02,810 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:03,097 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:03,243 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:03,921 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:04,760 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:04,887 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:05,068 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:05,305 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:05,426 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:05,570 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:05,883 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:06,006 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:06,586 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:06,759 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:07,220 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:07,413 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:08,061 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:08,638 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:08,795 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:08,824 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:08,944 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:09,378 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:09,518 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:10,251 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:10,385 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:10,656 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:10,769 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:11,022 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:11,148 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:11,832 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:11,953 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:12,308 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:12,435 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:12,750 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:12,864 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:13,188 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:13,349 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:13,479 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:13,616 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:14,294 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:14,448 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:14,836 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:15,012 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:15,193 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:15,371 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:16,086 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:16,977 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:17,160 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:17,515 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:17,732 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:18,412 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:18,939 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:19,459 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:20,259 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:20,409 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:20,606 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:21,484 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:21,662 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:21,874 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:22,198 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:22,377 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:22,554 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:22,924 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:23,081 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:23,578 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:23,784 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:23,912 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:24,028 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:24,373 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:24,470 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:25,321 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:25,451 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:26,120 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:26,715 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:26,879 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:26,910 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:27,045 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:27,446 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:27,974 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:28,243 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:28,654 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:28,824 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:28,974 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:29,466 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:29,591 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:30,248 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:30,381 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:30,920 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:31,299 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:31,406 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:32,336 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:32,489 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:32,846 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:32,973 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:33,187 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:33,313 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:34,006 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:34,488 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:34,904 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:35,268 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:35,374 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:35,915 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:36,232 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:36,587 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:36,767 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:36,945 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:37,125 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:37,302 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:37,662 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:38,016 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:38,199 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:38,836 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:38,968 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:39,207 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:39,455 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:39,876 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:40,004 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:40,228 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:40,345 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:40,561 INFO app.rate_limiter: 429 received: concurrency limit 1 -> 1
+2026-09-26 23:46:41,070 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:41,209 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:41,665 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:41,843 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:42,020 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:42,202 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:42,556 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:42,736 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:42,919 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:43,092 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:43,448 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:43,626 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:43,808 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:43,985 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:44,422 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:44,544 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:45,138 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:45,274 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:45,960 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:46,490 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:46,581 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:46,705 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:47,205 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:47,388 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:48,332 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:48,691 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:48,804 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:49,474 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:50,206 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:50,330 INFO app.rate_limiter: 429 received: concurrency limit 3 -> 1
+2026-09-26 23:46:50,792 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:50,954 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:51,207 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:51,361 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:51,691 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:51,822 INFO app.rate_limiter: 429 received: concurrency limit 2 -> 1
+2026-09-26 23:46:52,421 INFO app.rate_limiter: concurrency limit raised to 2
+2026-09-26 23:46:52,985 INFO app.rate_limiter: concurrency limit raised to 3
+2026-09-26 23:46:55,582 INFO app.rate_limiter: concurrency limit raised to 4
+2026-09-26 23:47:00,483 INFO app.rate_limiter: concurrency limit raised to 5
+2026-09-26 23:47:14,119 INFO app.jobs: job c26aead0fafb44f48d21f87dba5fb399 completed: 993 succeeded, 7 failed, 765 retries, 765 x 429 in 428.4s

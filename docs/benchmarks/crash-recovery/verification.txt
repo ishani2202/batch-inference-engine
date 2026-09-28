@@ -1,0 +1,2 @@
+# Integrity check of the job's files after kill -9 at 159 items and automatic resume
+records: 1000  unique indexes: 1000  exactly 0..999: True
