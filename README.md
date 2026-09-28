@@ -1,6 +1,4 @@
-<div align="center">
-
-# ⚡ Batch Inference Engine
+# Batch Inference Engine
 
 **A self-tuning, crash-safe REST service that pushes large prompt files through LLM endpoints without losing a single item.**
 
@@ -9,13 +7,11 @@
 ![Tests](https://img.shields.io/badge/tests-80%20passing-brightgreen)
 ![DigitalOcean](https://img.shields.io/badge/DigitalOcean-Serverless%20Inference%20%2B%20Spaces-0080FF?logo=digitalocean&logoColor=white)
 
-</div>
-
 Give it a JSON file of prompts and you get a job ID straight away. In the background the engine streams the file through a bounded worker pool to DigitalOcean Serverless Inference. **A shared controller learns the provider's rate limit on its own**, like TCP congestion control. Every result is written to disk the moment it arrives. Bad rows are set aside as errors, crashes resume where they stopped, and memory stays flat whether the file holds 1,000 items or 500,000.
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```mermaid
 flowchart LR
@@ -41,34 +37,34 @@ flowchart LR
 
 | Stage | What happens |
 |---|---|
-| **① Ingestion** | `POST /job` returns a job ID instantly. A streaming pre-flight pass validates the JSON and counts the items **before any money is spent**, then the file is streamed again one item at a time. |
-| **② Scatter** | Items flow into a bounded queue (`QUEUE_SIZE=100`). When it is full, the reader waits, so it can never race ahead of the workers. This is the "chunking": a rolling window instead of fixed slices, so no worker ever idles waiting for the slowest item in its slice. |
-| **③ Backpressure** | Every request needs a slot from **one controller shared by all workers**. A 429 halves the number of slots and successes grow it back. Each retry waits a random, exponentially growing delay (full jitter). |
-| **④ Gather** | Each outcome is appended to `results.jsonl` / `errors.jsonl` as soon as it finishes. It is also uploaded to Spaces on a timer, and a webhook fires when the job completes. |
+| **Ingestion** | `POST /job` returns a job ID instantly. A streaming pre-flight pass validates the JSON and counts the items **before any money is spent**, then the file is streamed again one item at a time. |
+| **Scatter** | Items flow into a bounded queue (`QUEUE_SIZE=100`). When it is full, the reader waits, so it can never race ahead of the workers. This is the "chunking": a rolling window instead of fixed slices, so no worker ever idles waiting for the slowest item in its slice. |
+| **Backpressure** | Every request needs a slot from **one controller shared by all workers**. A 429 halves the number of slots and successes grow it back. Each retry waits a random, exponentially growing delay (full jitter). |
+| **Gather** | Each outcome is appended to `results.jsonl` / `errors.jsonl` as soon as it finishes. It is also uploaded to Spaces on a timer, and a webhook fires when the job completes. |
 
 The full diagram, with every retry path and the crash-recovery loop, is in [docs/architecture.md](docs/architecture.md).
 
 ---
 
-## 📊 Results at a glance
+## Results at a glance
 
 | | Result |
 |---|---|
-| 🚀 **Adaptive vs fixed concurrency** (same rate-limited API) | **6.9× faster, 137× fewer 429s**: 10.4 s vs 71.6 s, 6 vs 820 rejections |
-| 🧠 **500,000 items** | Memory **flat at ~60 MB** from the first item to the last. A plain `json.load` of the same file needs 295 MB before doing any work. |
-| ☁️ **Real DigitalOcean run** (1,000 prompts, `mistral-3-14B`) | **993 ok + 7 bad rows isolated, 0 lost**, through **765 real 429s**, for **$0.016** |
-| 💥 **`kill -9` mid-job** | Resumed automatically on restart: exactly 1,000 unique results, no loss, no duplicates |
-| ✅ **Quality** | 80 offline tests, lint, CI on Python 3.11 / 3.12 / 3.13 |
+| **Adaptive vs fixed concurrency** (same rate-limited API) | **6.9× faster, 137× fewer 429s**: 10.4 s vs 71.6 s, 6 vs 820 rejections |
+| **500,000 items** | Memory **flat at ~60 MB** from the first item to the last. A plain `json.load` of the same file needs 295 MB before doing any work. |
+| **Real DigitalOcean run** (1,000 prompts, `mistral-3-14B`) | **993 ok + 7 bad rows isolated, 0 lost**, through **765 real 429s**, for **$0.016** |
+| **`kill -9` mid-job** | Resumed automatically on restart: exactly 1,000 unique results, no loss, no duplicates |
+| **Quality** | 80 offline tests, lint, CI on Python 3.11 / 3.12 / 3.13 |
 
 ---
 
-## 📚 Contents
+## Contents
 
-[Quickstart](#-quickstart) · [API](#-api) · [How it works](#-how-it-works) · [Real DigitalOcean run](#-real-digitalocean-run) · [Extensions](#-extensions-spaces--webhook) · [Design decisions](#-design-decisions) · [Testing](#-testing) · [Configuration](#-configuration) · [What I'd do next](#-what-id-do-next)
+[Quickstart](#quickstart) | [API](#api) | [How it works](#how-it-works) | [Real DigitalOcean run](#real-digitalocean-run) | [Extensions](#extensions-spaces--webhook) | [Design decisions](#design-decisions) | [Testing](#testing) | [Configuration](#configuration) | [What I'd do next](#what-id-do-next)
 
 ---
 
-## 🚀 Quickstart
+## Quickstart
 
 ```bash
 # 1. Install (Python 3.11+)
@@ -113,7 +109,7 @@ Regenerate the input, or build a bigger one: `python scripts/generate_batch.py -
 
 ---
 
-## 🔌 API
+## API
 
 | Endpoint | Description |
 |---|---|
@@ -143,7 +139,7 @@ Regenerate the input, or build a bigger one: `python scripts/generate_batch.py -
 
 ---
 
-## 🧩 How it works
+## How it works
 
 ### 1. It learns the provider's rate limit on its own
 
@@ -194,13 +190,13 @@ The controller settled into the classic AIMD sawtooth just under the hidden capa
 
 ---
 
-## 🌊 Real DigitalOcean run
+## Real DigitalOcean run
 
 The included 1,000-prompt file, run against DigitalOcean Serverless Inference with default settings:
 
 | Model | Outcome | Time | Rate limiting | Tokens | Cost |
 |---|---|---|---|---|---|
-| `mistral-3-14B` | **993 ok · 7 bad rows isolated · 0 lost** | 428 s | **765 real 429s**, all recovered | 14,876 in / 67,393 out | **$0.016** |
+| `mistral-3-14B` | **993 ok | 7 bad rows isolated | 0 lost** | 428 s | **765 real 429s**, all recovered | 14,876 in / 67,393 out | **$0.016** |
 
 What the real API taught us, each turned into code and tests:
 
@@ -216,7 +212,7 @@ The spec suggests Llama 3 8B, but it is no longer offered: it isn't in `GET /v1/
 
 ---
 
-## 🔔 Extensions: Spaces + webhook
+## Extensions: Spaces + webhook
 
 Both are **tested live**, not just mocked.
 
@@ -225,7 +221,7 @@ Both are **tested live**, not just mocked.
 
 ---
 
-## 🧭 Design decisions
+## Design decisions
 
 | Decision | Chose | Over | Why |
 |---|---|---|---|
@@ -239,7 +235,7 @@ Both are **tested live**, not just mocked.
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ```bash
 pytest -v            # 80 tests, ~3 s, fully offline
@@ -265,7 +261,7 @@ CI ([`ci.yml`](.github/workflows/ci.yml)) runs lint + tests on every push, on Py
 
 ---
 
-## 🔧 Configuration
+## Configuration
 
 Everything is set with environment variables or `.env` (see [`.env.example`](.env.example)). Only `MODEL_ACCESS_KEY` is required.
 
@@ -304,15 +300,15 @@ app/
   storage.py       JSONL/meta files, torn-line repair, resume bitmap
   spaces.py        Timed upload to DigitalOcean Spaces
   webhook.py       Completion webhook
-scripts/           generate_batch.py · fake_inference_server.py · run_job.py
+scripts/           generate_batch.py | fake_inference_server.py | run_job.py
 tests/             80 offline tests
-docs/              architecture.md · benchmarks/500k/ (raw evidence)
+docs/              architecture.md | benchmarks/500k/ (raw evidence)
 ```
 </details>
 
 ---
 
-## 🔭 What I'd do next
+## What I'd do next
 
 - **Header-aware pacing:** DO reports its remaining requests in the response headers. Pacing on those would prevent 429s instead of only reacting to them.
 - **One controller shared across concurrent jobs,** per endpoint and model, so parallel jobs share one budget instead of competing for it.
