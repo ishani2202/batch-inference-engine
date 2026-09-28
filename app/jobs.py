@@ -213,9 +213,10 @@ class Job:
                     s.spaces_prefix,
                     self.id,
                     self.store,
-                    s.spaces_part_size,
+                    s.spaces_flush_seconds,
                     **self._spaces_state,
                 )
+                self.uploader.start()
             self.limiter = AdaptiveLimiter(s.min_concurrency, s.max_concurrency, s.start_concurrency)
             limits = httpx.Limits(max_connections=s.max_concurrency, max_keepalive_connections=s.max_concurrency)
             async with httpx.AsyncClient(timeout=s.request_timeout, limits=limits) as http:
@@ -234,6 +235,8 @@ class Job:
         except asyncio.CancelledError:
             # Server shutting down: leave status RUNNING so the job resumes on restart.
             cancelled = True
+            if self.uploader:
+                self.uploader.cancel()
             raise
         except Exception as exc:
             self.status, self.error = JobStatus.FAILED, f"internal error: {exc!r}"
@@ -280,8 +283,6 @@ class Job:
             self.input_tokens += result.input_tokens
             self.output_tokens += result.output_tokens
             self._processed_this_run += 1
-            if self.uploader:
-                self.uploader.on_result()
 
     def _record_error(
         self, index: int, item_id: Any, kind: str, message: str, attempts: int, status_code: int | None = None

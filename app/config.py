@@ -52,7 +52,7 @@ class Settings(BaseSettings):
     spaces_key: str = ""
     spaces_secret: str = ""
     spaces_prefix: str = "batch-jobs"
-    spaces_part_size: int = 500  # results per uploaded part
+    spaces_flush_seconds: float = 30.0  # upload new results this often (skipped if nothing new)
 
     # --- Webhook (optional extension) ---
     webhook_retries: int = 3

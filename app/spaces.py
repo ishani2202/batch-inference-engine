@@ -1,8 +1,10 @@
 """Progressive upload of results to a DigitalOcean Spaces bucket (S3-compatible).
 
 S3 objects can't be appended to, so we upload results.jsonl in numbered parts:
-every `part_size` new results, the bytes written since the last upload become
-`results/part-00001.jsonl`, `part-00002.jsonl`, ... If the machine dies, all
+every `flush_seconds` (if anything new was written), the bytes written since the
+last upload become `results/part-00001.jsonl`, `part-00002.jsonl`, ... A time-based
+trigger bounds how much work a machine loss can cost (at most `flush_seconds` of
+results) whatever the job's speed, and a quiet period uploads nothing. If the machine dies, all
 completed parts are safe in the bucket. Concatenating the parts in order
 reproduces results.jsonl exactly (stale parts left by a crash are removed at the
 end, see _delete_stale_parts).
@@ -45,7 +47,7 @@ class SpacesUploader:
         prefix: str,
         job_id: str,
         store: JobStore,
-        part_size: int,
+        flush_seconds: float,
         uploaded_offset: int = 0,
         next_part: int = 1,
     ) -> None:
@@ -53,26 +55,39 @@ class SpacesUploader:
         self.bucket = bucket
         self.base = f"{prefix.strip('/')}/{job_id}"
         self.store = store
-        self.part_size = part_size
+        self.flush_seconds = flush_seconds
         # Resume state (persisted in meta.json): bytes of results.jsonl already
         # uploaded, and the next part number.
         self.uploaded_offset = uploaded_offset
         self.next_part = next_part
-        self._pending = 0
         self._lock = asyncio.Lock()
-        self._tasks: set[asyncio.Task] = set()
+        self._stop = asyncio.Event()
+        self._task: asyncio.Task | None = None
 
     def state(self) -> dict[str, int]:
         return {"uploaded_offset": self.uploaded_offset, "next_part": self.next_part}
 
-    def on_result(self) -> None:
-        """Called after each result is appended; starts a part upload when due."""
-        self._pending += 1
-        if self._pending >= self.part_size:
-            self._pending = 0
-            task = asyncio.create_task(self.flush_part())
-            self._tasks.add(task)
-            task.add_done_callback(self._tasks.discard)
+    def start(self) -> None:
+        """Start the background timer that uploads new results every flush_seconds."""
+        self._task = asyncio.create_task(self._flush_periodically())
+
+    async def stop(self) -> None:
+        """Stop the timer, letting an upload already in progress finish."""
+        self._stop.set()
+        if self._task:
+            await self._task
+
+    def cancel(self) -> None:
+        """Server shutdown: stop the timer immediately (the job resumes on restart)."""
+        if self._task:
+            self._task.cancel()
+
+    async def _flush_periodically(self) -> None:
+        while not self._stop.is_set():
+            try:
+                await asyncio.wait_for(self._stop.wait(), timeout=self.flush_seconds)
+            except TimeoutError:
+                await self.flush_part()  # a no-op if nothing new was written
 
     async def flush_part(self) -> None:
         """Upload everything written since the last upload as the next part."""
@@ -93,8 +108,7 @@ class SpacesUploader:
 
     async def finalize(self, meta: dict[str, Any]) -> None:
         """At job end: upload the last partial part, errors.jsonl, and meta.json."""
-        if self._tasks:
-            await asyncio.gather(*self._tasks, return_exceptions=True)
+        await self.stop()
         await self.flush_part()
         try:
             await asyncio.to_thread(self._delete_stale_parts)

@@ -9,7 +9,7 @@ A small REST service that takes a JSON file of prompts (1,000 in the sample, 500
 | Adaptive controller vs. fixed concurrency (same rate-limited API) | **6.9× faster, 137× fewer 429s** (10.4s vs 71.6s, 6 vs 820) |
 | 500,000-item run | **RSS flat at ~60 MB** from item 1 to item 500,000; nothing lost *(see [Scaling](#scaling-and-memory))* |
 | Real 1,000-prompt run on DigitalOcean (`mistral-3-14B`) | **993 ok + 7 invalid, 0 lost, through 765 real 429s; $0.016** *(see [Real run](#real-run-on-digitalocean))* |
-| Tests | 79 mocked unit + integration tests, ruff lint, CI on Python 3.11–3.13 |
+| Tests | 80 mocked unit + integration tests, ruff lint, CI on Python 3.11–3.13 |
 
 ---
 
@@ -263,7 +263,7 @@ The interfaces stay the same: *reader → queue → worker → controller → cl
 - **Tested with a real `kill -9`.** A 1,000-item job was killed at 159 items done. On restart it resumed automatically and finished with exactly 1,000 unique records (993 ok, 7 invalid inputs): nothing lost, nothing duplicated.
 - **Graceful shutdown.** On SIGTERM, running jobs are cancelled but left marked `running` on disk, so the next start resumes them.
 - **Atomic metadata.** `meta.json` is written to a temp file and renamed, so it is never half-written.
-- **Spaces upload (extension).** If `SPACES_*` is configured, every `SPACES_PART_SIZE` results the newly written bytes of `results.jsonl` are uploaded as `results/part-NNNNN.jsonl`. Concatenating the parts reproduces the file exactly. At the end `errors.jsonl` and `meta.json` are uploaded too. The upload offset is saved in `meta.json`, so after a resume the part numbering continues where it left off. `boto3` runs in a thread so it never blocks the event loop. A failed upload is logged and retried with the next part, and it never fails the job. When the job finishes, any part numbered beyond the last one written is deleted. Such parts can be left behind if a `kill -9` hits while `meta.json`'s saved upload state is behind the bucket. **Tested live against a real DigitalOcean Spaces bucket:** a normal 1,000-item job (10 parts) and a job killed with `kill -9` at ~375 items then resumed. In both cases the parts in the bucket join byte-for-byte into the local `results.jsonl`, with no gaps or duplicates, and `errors.jsonl` and `meta.json` are uploaded.
+- **Spaces upload (extension).** If `SPACES_*` is configured, every `SPACES_FLUSH_SECONDS` (default 30 s) the newly written bytes of `results.jsonl` are uploaded as `results/part-NNNNN.jsonl`. If nothing new was written, the tick is skipped, so there are no empty parts. The final upload happens at the end. A time-based trigger bounds what a machine loss can cost (at most one interval of results) whatever the job's speed: a count-based one would upload constantly on a fast job and rarely on a slow one. Concatenating the parts reproduces the file exactly. At the end `errors.jsonl` and `meta.json` are uploaded too. The upload offset is saved in `meta.json`, so after a resume the part numbering continues where it left off. `boto3` runs in a thread so it never blocks the event loop. A failed upload is logged and retried with the next part, and it never fails the job. When the job finishes, any part numbered beyond the last one written is deleted. Such parts can be left behind if a `kill -9` hits while `meta.json`'s saved upload state is behind the bucket. **Tested live against a real DigitalOcean Spaces bucket** (with `SPACES_FLUSH_SECONDS=2`): a normal 1,000-item job (6 parts) and a job killed with `kill -9` at 461 items then resumed (4 parts). In both cases the parts in the bucket join byte-for-byte into the local `results.jsonl`, with no gaps or duplicates, and `errors.jsonl` and `meta.json` are uploaded.
 - **Webhook (extension).** When a job finishes, the job summary plus `download_url` is POSTed to `webhook_url`. 5xx responses and network errors are retried with backoff. A 4xx from the receiver is not retried. A failed webhook never changes the job's result.
 - **Input path safety.** `input_file` is resolved and must stay inside `DATA_DIR`. `../../etc/passwd` gets a `400`.
 
@@ -287,7 +287,7 @@ The interfaces stay the same: *reader → queue → worker → controller → cl
 pytest -v
 ```
 
-79 tests, all offline. The inference API is mocked with `respx`, because a 429 or 500 is something the *server* sends. No prompt can trigger one, and a real API won't produce them on demand. Mocks can produce exact failures on command, for free, in milliseconds, in CI. Backoff delays are configured to milliseconds in tests.
+80 tests, all offline. The inference API is mocked with `respx`, because a 429 or 500 is something the *server* sends. No prompt can trigger one, and a real API won't produce them on demand. Mocks can produce exact failures on command, for free, in milliseconds, in CI. Backoff delays are configured to milliseconds in tests.
 
 | File | What it proves |
 |---|---|
@@ -295,7 +295,7 @@ pytest -v
 | `test_rate_limiter.py` | Halves on 429; floor at min; **one burst = one cut**; slow start; additive increase; ceiling at max; blocks at limit; after a cut, new requests wait for in-flight to drain; `Retry-After` pauses everyone |
 | `test_workers.py` | Every item handled once; skip set honored; pool is bounded; **reader can't run ahead of workers** (backpressure); a fatal error cancels everything |
 | `test_reader_storage.py` | Streaming indexes; empty array; truncated / invalid / non-array / empty file rejected; append + read back; **torn last line repaired**; atomic meta; done-set |
-| `test_jobs.py` | **succeeded + failed = total, no duplicates**; invalid items never hit the API; oversized prompts rejected locally; persistent failures isolated; **rate-limit storm loses nothing**; every request holds a slot; bad key stops early; 402 billing error and 404 unknown model stop early and blame no item; missing key fails with zero API calls; corrupt file fails with zero API calls; **resume after crash skips finished items**; finished jobs reload without re-running; Spaces parts concatenate to the exact file; **stale parts left by a crash are removed**; Spaces or webhook failures don't fail the job; webhook payload + retry; path traversal rejected |
+| `test_jobs.py` | **succeeded + failed = total, no duplicates**; invalid items never hit the API; oversized prompts rejected locally; persistent failures isolated; **rate-limit storm loses nothing**; every request holds a slot; bad key stops early; 402 billing error and 404 unknown model stop early and blame no item; missing key fails with zero API calls; corrupt file fails with zero API calls; **resume after crash skips finished items**; finished jobs reload without re-running; Spaces parts concatenate to the exact file; **the timer uploads new results and skips empty ticks**; **stale parts left by a crash are removed**; Spaces or webhook failures don't fail the job; webhook payload + retry; path traversal rejected |
 | `test_api.py` | Full flow through HTTP (create → poll → download results and errors); `POST` returns before work finishes; `409` while running; `404` unknown; `400` bad path; `422` bad webhook URL; `POST` with no body uses defaults; failed jobs still downloadable; download streams in chunks and skips a torn line |
 
 CI ([.github/workflows/ci.yml](.github/workflows/ci.yml)) runs the full suite on every push against Python 3.11, 3.12 and 3.13.
@@ -319,7 +319,8 @@ All settings are environment variables (or `.env`). See [.env.example](.env.exam
 | `MAX_PROMPT_CHARS` | `32000` | Local guard against oversized prompts |
 | `DATA_DIR` / `OUTPUT_DIR` | `data` / `output` | Where inputs are read from and job files are written to |
 | `PRICE_INPUT_PER_M` / `PRICE_OUTPUT_PER_M` | `0` (`.env.example`: `0.20`) | USD per 1M tokens, for the cost estimate |
-| `SPACES_BUCKET`, `SPACES_REGION`, `SPACES_KEY`, `SPACES_SECRET`, `SPACES_PART_SIZE` | off | Progressive upload to Spaces (enabled when bucket + key + secret are set) |
+| `SPACES_BUCKET`, `SPACES_REGION`, `SPACES_KEY`, `SPACES_SECRET` | off | Progressive upload to Spaces (enabled when bucket + key + secret are set) |
+| `SPACES_FLUSH_SECONDS` | `30` | How often new results are uploaded to Spaces (skipped when nothing is new) |
 
 ## What I'd do next
 

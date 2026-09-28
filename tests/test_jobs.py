@@ -257,7 +257,7 @@ class FakeS3:
 async def test_job_uploads_results_and_final_files_to_spaces(settings):
     respx.post(CHAT_URL).mock(return_value=ok())
     settings.spaces_bucket, settings.spaces_key, settings.spaces_secret = "bucket", "k", "s"
-    settings.spaces_part_size = 3
+    settings.spaces_flush_seconds = 0.01
     s3 = FakeS3()
     job = await run_job(settings, prompts(10) + [None], s3_client_factory=lambda _: s3)
 
@@ -273,7 +273,7 @@ async def test_uploader_sends_only_new_bytes_as_numbered_parts(tmp_path):
     store = JobStore(tmp_path, "j")
     store.open()
     s3 = FakeS3()
-    up = SpacesUploader(s3, "bucket", "pre", "j", store, part_size=2)
+    up = SpacesUploader(s3, "bucket", "pre", "j", store, flush_seconds=30)
     for i in range(3):
         store.append_result({"index": i})
     await up.flush_part()
@@ -287,6 +287,36 @@ async def test_uploader_sends_only_new_bytes_as_numbered_parts(tmp_path):
     assert up.state() == {"uploaded_offset": store.results_size(), "next_part": 3}
 
 
+async def test_uploader_flushes_on_a_timer_and_skips_empty_uploads(tmp_path):
+    """Every flush_seconds, new results become the next part; quiet periods upload nothing."""
+    store = JobStore(tmp_path, "j")
+    store.open()
+    s3 = FakeS3()
+    up = SpacesUploader(s3, "bucket", "pre", "j", store, flush_seconds=0.05)
+
+    def parts():
+        return sorted(k for k in s3.objects if "/part-" in k)
+
+    up.start()
+    for i in range(3):
+        store.append_result({"index": i})
+    for _ in range(100):  # the timer, not us, must upload part 1
+        if parts():
+            break
+        await asyncio.sleep(0.01)
+    assert parts() == ["pre/j/results/part-00001.jsonl"]
+
+    await asyncio.sleep(0.25)  # ~5 timer ticks with nothing new written
+    assert parts() == ["pre/j/results/part-00001.jsonl"]  # no empty parts
+
+    store.append_result({"index": 3})
+    await up.finalize({"status": "completed"})  # stops the timer, uploads the rest
+    store.close()
+    assert up._task.done()
+    assert parts() == ["pre/j/results/part-00001.jsonl", "pre/j/results/part-00002.jsonl"]
+    assert b"".join(s3.objects[k] for k in parts()) == store.results_path.read_bytes()
+
+
 async def test_resume_with_stale_upload_state_leaves_no_duplicate_parts(tmp_path):
     """kill -9 when meta.json's upload state is 2+ parts behind the bucket.
 
@@ -296,7 +326,7 @@ async def test_resume_with_stale_upload_state_leaves_no_duplicate_parts(tmp_path
     store = JobStore(tmp_path, "j")
     store.open()
     s3 = FakeS3()
-    before = SpacesUploader(s3, "bucket", "pre", "j", store, part_size=100)
+    before = SpacesUploader(s3, "bucket", "pre", "j", store, flush_seconds=30)
     for part in range(3):
         for i in range(part * 2, part * 2 + 2):
             store.append_result({"index": i})
@@ -304,7 +334,7 @@ async def test_resume_with_stale_upload_state_leaves_no_duplicate_parts(tmp_path
     assert len([k for k in s3.objects if "/part-" in k]) == 3
     stale = {"uploaded_offset": len(b'{"index": 0}\n{"index": 1}\n'), "next_part": 2}  # saved after part 1 only
 
-    after = SpacesUploader(s3, "bucket", "pre", "j", store, part_size=100, **stale)  # the "restart"
+    after = SpacesUploader(s3, "bucket", "pre", "j", store, flush_seconds=30, **stale)  # the "restart"
     store.append_result({"index": 6})
     await after.finalize({"status": "completed"})
     store.close()
@@ -318,7 +348,7 @@ async def test_resume_with_stale_upload_state_leaves_no_duplicate_parts(tmp_path
 async def test_spaces_failure_does_not_fail_job(settings):
     respx.post(CHAT_URL).mock(return_value=ok())
     settings.spaces_bucket, settings.spaces_key, settings.spaces_secret = "bucket", "k", "s"
-    settings.spaces_part_size = 2
+    settings.spaces_flush_seconds = 0.01
 
     class BrokenS3:
         def put_object(self, **_):
