@@ -188,7 +188,7 @@ The controller settled into the classic AIMD sawtooth just under the hidden capa
 
 ## Scale thresholds
 
-**At 500,000 prompts, the bottleneck is the provider, not this service.** Memory stays constant (~60 MB, measured). Disk grows by about 0.5 KB per result (~260 MB in total). Cost is linear (~$8 with `mistral-3-14B`). A single process sustains 575 items/s. The first real ceiling is DigitalOcean's rate limit.
+**At 500,000 prompts, the bottleneck is the provider, not this service.** Memory stays constant (~60 MB, measured). Disk grows by about 0.5 KB per result (~260 MB in total). Cost is linear ( about $8 with `mistral-3-14B`). A single process sustains 575 items/s. The first real ceiling is DigitalOcean's rate limit.
 
 | Ceiling | When you hit it | What to do |
 |---|---|---|
