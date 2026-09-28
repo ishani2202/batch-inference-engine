@@ -245,6 +245,13 @@ class FakeS3:
     def put_object(self, Bucket, Key, Body):
         self.objects[Key] = Body
 
+    def list_objects_v2(self, Bucket, Prefix, StartAfter=""):
+        keys = sorted(k for k in self.objects if k.startswith(Prefix) and k > StartAfter)
+        return {"Contents": [{"Key": k} for k in keys], "IsTruncated": False}
+
+    def delete_object(self, Bucket, Key):
+        self.objects.pop(Key, None)
+
 
 @respx.mock
 async def test_job_uploads_results_and_final_files_to_spaces(settings):
@@ -278,6 +285,33 @@ async def test_uploader_sends_only_new_bytes_as_numbered_parts(tmp_path):
     assert s3.objects["pre/j/results/part-00001.jsonl"].count(b"\n") == 3
     assert s3.objects["pre/j/results/part-00002.jsonl"] == b'{"index": 3}\n'
     assert up.state() == {"uploaded_offset": store.results_size(), "next_part": 3}
+
+
+async def test_resume_with_stale_upload_state_leaves_no_duplicate_parts(tmp_path):
+    """kill -9 when meta.json's upload state is 2+ parts behind the bucket.
+
+    The resumed uploader re-sends from the stale offset under the stale part number,
+    so old higher-numbered parts would duplicate data unless finalize removes them.
+    """
+    store = JobStore(tmp_path, "j")
+    store.open()
+    s3 = FakeS3()
+    before = SpacesUploader(s3, "bucket", "pre", "j", store, part_size=100)
+    for part in range(3):
+        for i in range(part * 2, part * 2 + 2):
+            store.append_result({"index": i})
+        await before.flush_part()
+    assert len([k for k in s3.objects if "/part-" in k]) == 3
+    stale = {"uploaded_offset": len(b'{"index": 0}\n{"index": 1}\n'), "next_part": 2}  # saved after part 1 only
+
+    after = SpacesUploader(s3, "bucket", "pre", "j", store, part_size=100, **stale)  # the "restart"
+    store.append_result({"index": 6})
+    await after.finalize({"status": "completed"})
+    store.close()
+
+    parts = sorted(k for k in s3.objects if "/part-" in k)
+    assert b"".join(s3.objects[k] for k in parts) == store.results_path.read_bytes()
+    assert parts == ["pre/j/results/part-00001.jsonl", "pre/j/results/part-00002.jsonl"]
 
 
 @respx.mock

@@ -4,7 +4,8 @@ S3 objects can't be appended to, so we upload results.jsonl in numbered parts:
 every `part_size` new results, the bytes written since the last upload become
 `results/part-00001.jsonl`, `part-00002.jsonl`, ... If the machine dies, all
 completed parts are safe in the bucket. Concatenating the parts in order
-reproduces results.jsonl exactly.
+reproduces results.jsonl exactly (stale parts left by a crash are removed at the
+end, see _delete_stale_parts).
 
 boto3 is synchronous, so every call runs in a worker thread (asyncio.to_thread)
 to keep the event loop free. Upload failures are logged and retried on the next
@@ -96,12 +97,34 @@ class SpacesUploader:
             await asyncio.gather(*self._tasks, return_exceptions=True)
         await self.flush_part()
         try:
+            await asyncio.to_thread(self._delete_stale_parts)
             if self.store.errors_path.exists():
                 data = await asyncio.to_thread(self.store.errors_path.read_bytes)
                 await asyncio.to_thread(self._put, f"{self.base}/errors.jsonl", data)
             await asyncio.to_thread(self._put, f"{self.base}/meta.json", json.dumps(meta, indent=2).encode())
         except Exception:
             log.exception("Spaces upload of final job files failed")
+
+    def _delete_stale_parts(self) -> None:
+        """Remove parts numbered at or beyond next_part, left over from before a crash.
+
+        meta.json (which holds our upload state) is saved every few seconds, so after
+        a kill -9 it can be behind the bucket. The resumed job then re-uploads from
+        the older offset under the older part numbers; any higher-numbered part it
+        never reaches again would duplicate data. Parts go up in order, so everything
+        from next_part on is stale.
+        """
+        prefix = f"{self.base}/results/"
+        start_after = f"{prefix}part-{self.next_part - 1:05d}.jsonl"
+        while True:
+            resp = self.client.list_objects_v2(Bucket=self.bucket, Prefix=prefix, StartAfter=start_after)
+            keys = [obj["Key"] for obj in resp.get("Contents", [])]
+            for key in keys:
+                self.client.delete_object(Bucket=self.bucket, Key=key)
+                log.info("deleted stale Spaces part %s", key)
+            if not resp.get("IsTruncated") or not keys:
+                return
+            start_after = keys[-1]
 
     def _put(self, key: str, data: bytes) -> None:
         self.client.put_object(Bucket=self.bucket, Key=key, Body=data)

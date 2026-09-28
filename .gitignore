@@ -7,3 +7,4 @@ output/
 .DS_Store
 docs/*.pdf
 WRITEUP.md
+local_runs/

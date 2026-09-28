@@ -149,3 +149,4 @@ What it does; exact quickstart; architecture diagram + walkthrough; real 1,000-p
 12. **402 Payment Required is fatal** (`BillingError`), like 401/403: it is account-wide, so every item would fail the same way.
 13. **Real DO limit is a rate, not concurrency.** Headers show `x-ratelimit-limit-requests: 120` (~2 req/s), no `Retry-After` on 429s. The concurrency controller finds the ceiling but can't prevent every 429. Header-aware pacing is a possible next step (undecided).
 14. **404 is fatal** (`ConfigError`): DO returns `404 "model not found"` for an unknown MODEL (verified with a real call); on the chat endpoint a 404 is always job-wide (model or URL).
+15. **Stale Spaces parts are deleted at finalize.** Upload state in meta.json can lag the bucket after kill -9; the resumed job re-uploads from the older offset/part number, so parts beyond the last one written are removed. Verified live on a real bucket.
