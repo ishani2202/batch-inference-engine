@@ -325,5 +325,6 @@ docs/
 ## What I'd do next
 
 - **Security.** Add API authentication, block internal addresses in webhook URLs (SSRF protection), and sign webhook payloads so receivers can verify they came from this service.
+- **Pace on DigitalOcean's rate-limit headers.** Every response reports how many requests are left (`x-ratelimit-remaining-requests`). Pacing on that would prevent 429s instead of only reacting to them.
 - **Deploy on DigitalOcean.** Ship as a Docker image on App Platform, or DOKS once multi-machine, with job state in Managed Postgres and results in Spaces. Autoscaling only pays off once the account's rate quota is raised.
 - **Route between real-time and batch.** Send urgent jobs through this service for live progress, and jobs that can wait to DO Batch Inference, which is cheaper and has separate rate limits.
