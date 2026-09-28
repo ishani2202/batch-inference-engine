@@ -18,5 +18,7 @@ jobs:
           cache: pip
           cache-dependency-path: requirements*.txt
       - run: pip install -r requirements-dev.txt
+      - name: Lint (ruff)
+        run: ruff check .
       - name: Run tests (all mocked, no API key needed)
         run: pytest -v

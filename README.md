@@ -120,6 +120,8 @@ The full diagram, with every retry path and the crash-recovery loop, is in **[do
 3. **Backpressure and throttling.** Every HTTP request must hold a slot from one controller shared by all workers. The number of slots adapts: a 429 halves it, successes grow it back, and `Retry-After` pauses everyone. Each failed request is also retried with exponential backoff and full jitter.
 4. **Gather.** Each outcome is appended to `results.jsonl` or `errors.jsonl` the moment it finishes. Optionally, new results are uploaded to Spaces in numbered parts. When the job ends, the webhook fires.
 
+**How this maps to the spec's "chunks" and "scatter-gather".** The spec asks for the prompts to be partitioned into concurrent execution chunks and fanned out across a bounded worker pool. Here the bounded queue is the chunk. Rather than cutting the file into fixed slices up front, the reader keeps a rolling window of at most `QUEUE_SIZE` items in the queue, and the `MAX_CONCURRENCY` workers pull from it as they become free. A fixed split would make every worker wait for the slowest item in its slice and would need the whole slice in memory. The rolling window keeps every worker busy and puts a hard limit on memory, while still splitting and fanning out the work. *Scatter* is the queue and the workers. *Gather* is the per-item append to `results.jsonl`/`errors.jsonl`, which `GET /job/{id}/download` assembles into one array.
+
 | Module | Responsibility |
 |---|---|
 | [app/main.py](app/main.py) | HTTP endpoints, startup recovery, graceful shutdown |
@@ -250,7 +252,7 @@ The interfaces stay the same: *reader → queue → worker → controller → cl
 | Corrupt file | Pre-flight streaming validation pass | Fail midway | A second streaming read of the file is cheap (measured: 0.18 s and 15 MB peak for the 46 MB, 500k-item file) and avoids paying for half a job on a broken file. It also gives `status` a real total. |
 | Oversized prompts | Rejected locally (`MAX_PROMPT_CHARS`) | Let the API reject them | Saves a paid round trip. The API's own 4xx is still handled as a non-retryable error. |
 | Auth errors | Stop the job on 401/403 | Treat as a per-item error | Otherwise a typo in the key would burn through 1,000 failures. |
-| Build vs. managed batch API | Built | Provider batch endpoints | A managed batch API is the right call when a 24-hour turnaround is fine and you want the discount. This service gives real-time progress, control over retries and concurrency, per-item error isolation, webhooks, and works against any OpenAI-compatible endpoint. |
+| Build vs. DigitalOcean Batch Inference | Built on Serverless Inference | [DO Batch Inference](https://docs.digitalocean.com/products/inference/how-to/use-batch-inference/) | DO Batch Inference is the right call when a 24-hour turnaround is fine: it is async, with up to 50% lower cost than real-time inference and rate limits isolated from production traffic. However, it only supports OpenAI and Anthropic commercial models, **not the open-source models** (such as Llama 3 8B) the spec asks us to prioritize. It caps each file at 50,000 requests / 200 MB, so 500,000 items would need at least 10 separate batches. Progress is tracked by polling, and results arrive when the job ends. This service runs cheap open-source models, gives live per-item progress, retry/concurrency control and a completion webhook, and streams any number of items from one file. For a team using OpenAI/Anthropic models that can wait a day, DO Batch Inference is simpler and cheaper, and they should use it. |
 
 ## Testing
 
@@ -296,6 +298,7 @@ All settings are environment variables (or `.env`). See [.env.example](.env.exam
 
 - **Multiple machines:** a shared durable queue, stateless workers, a distributed rate-limit budget, and Postgres for job state (see [Scaling](#scaling-and-memory)).
 - **Security:** API authentication and per-tenant quotas. Webhook URLs currently allow SSRF, so resolve them and block private or metadata IP ranges, and sign payloads with HMAC so receivers can verify them.
+- **One controller shared across concurrent jobs.** Today each job has its own adaptive controller, so two jobs running at once against the same endpoint each adapt on their own instead of sharing one budget. They still converge, like parallel TCP flows, but a single controller per endpoint and model, owned by the `JobManager`, would coordinate them.
 - **Per-tenant rate limits and priorities**, so one large job can't starve the others.
 - **Token-aware throttling:** providers also limit tokens per minute, not just requests. The controller could budget on estimated tokens.
 - **Cancel endpoint** (`DELETE /job/{id}`) and job retention/cleanup.

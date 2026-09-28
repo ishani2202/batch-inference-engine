@@ -1,0 +1,7 @@
+{"index": 25315, "id": "broken-empty", "error_type": "invalid_input", "message": "prompt is empty", "status_code": null, "attempts": 0}
+{"index": 37977, "id": "broken-blank", "error_type": "invalid_input", "message": "prompt is empty", "status_code": null, "attempts": 0}
+{"index": 79088, "id": null, "error_type": "invalid_input", "message": "item must be a JSON object, got NoneType", "status_code": null, "attempts": 0}
+{"index": 169781, "id": null, "error_type": "invalid_input", "message": "item must be a JSON object, got int", "status_code": null, "attempts": 0}
+{"index": 207001, "id": "broken-missing", "error_type": "invalid_input", "message": "missing or non-string 'prompt' field", "status_code": null, "attempts": 0}
+{"index": 341277, "id": "broken-type", "error_type": "invalid_input", "message": "missing or non-string 'prompt' field", "status_code": null, "attempts": 0}
+{"index": 496954, "id": "broken-too-long", "error_type": "invalid_input", "message": "prompt is 60000 chars, over the 32000 limit", "status_code": null, "attempts": 0}

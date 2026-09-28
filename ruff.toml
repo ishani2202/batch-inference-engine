@@ -1,0 +1,5 @@
+# Lint for real bugs (pyflakes + syntax/runtime errors), not style.
+target-version = "py311"
+
+[lint]
+select = ["E4", "E7", "E9", "F"]
