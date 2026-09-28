@@ -188,16 +188,13 @@ The controller settled into the classic AIMD sawtooth just under the hidden capa
 
 ## Scale thresholds
 
-Where each limit kicks in as a job grows, from first to hit to last:
+**At 500,000 prompts, the bottleneck is the provider, not this service.** Memory stays constant (~60 MB, measured). Disk grows by about 0.5 KB per result (~260 MB in total). Cost is linear (~$8 with `mistral-3-14B`). A single process sustains 575 items/s. The first real ceiling is DigitalOcean's rate limit.
 
-| Threshold | Where it bites | What to do |
+| Ceiling | When you hit it | What to do |
 |---|---|---|
-| **Provider rate limit** | This is the real ceiling. At DigitalOcean's **120 requests/minute** for this account, **500,000 prompts take about 69 hours**, however well the service performs. | Ask for a quota increase, spread the load over multiple keys or accounts, or use DO Batch Inference for workloads that can wait |
-| **Cost** | Grows linearly with tokens. At `mistral-3-14B` prices, 1,000 prompts cost $0.016, so 500k would be about $8. | `MAX_TOKENS` is the main lever |
-| **Single-process CPU** | Measured at 575 items/s on a laptop, with the fake API sharing the machine. A dedicated process should manage somewhere around 1,000 req/s (**an estimate, not measured**). | Scale out: a shared queue, stateless workers, a shared rate budget, and Postgres for job state. The internal interfaces stay the same. |
-| **Machine loss** | Local disk is lost. Spaces holds everything except the last `SPACES_FLUSH_SECONDS` of results. | Multi-machine with shared job state, so another node can take over the job |
-| **Disk** | About 0.5 KB per result (measured: 524 bytes on the real run), so roughly 260 MB for 500k | Rotate or ship results to Spaces |
-| **Memory** | Not a threshold. It stays flat at ~60 MB (measured on 500k items). | – |
+| **Provider rate limit**: 120 requests/min on this account | Immediately. 500k prompts need **~69 hours** at that rate, while the engine runs at under 1% of its own capacity. | Ask DigitalOcean for a higher quota, split the work across several API keys, or send batches that can wait to DO Batch Inference |
+| **Single-process throughput**: 575 items/s measured, ~1,000/s estimated on a dedicated host | Only if the provider allowed about 290× today's rate | Run several copies of the service: one shared queue, one shared rate limit across machines, and Postgres for job state. The internal design stays the same. |
+| **Machine loss** | At any time | Already limited: Spaces holds everything except the last 30 s of results. Next: shared job state, so another machine can pick up the job. |
 
 ---
 
