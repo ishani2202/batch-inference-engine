@@ -2,16 +2,11 @@
 
 **A self-tuning, crash-safe REST service that pushes large prompt files through LLM endpoints without losing a single item.**
 
-[![CI](https://github.com/ishani2202/batch-inference-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/ishani2202/batch-inference-engine/actions/workflows/ci.yml)
-![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-3776AB?logo=python&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-80%20passing-brightgreen)
-![DigitalOcean](https://img.shields.io/badge/DigitalOcean-Serverless%20Inference%20%2B%20Spaces-0080FF?logo=digitalocean&logoColor=white)
-
 Give it a JSON file of prompts and you get a job ID straight away. In the background the engine streams the file through a bounded worker pool to DigitalOcean Serverless Inference. **A shared controller learns the provider's rate limit on its own**, like TCP congestion control. Every result is written to disk the moment it arrives. Bad rows are set aside as errors, crashes resume where they stopped, and memory stays flat whether the file holds 1,000 items or 500,000.
 
 ---
 
-## Architecture
+## 🏗️ Architecture
 
 ```mermaid
 flowchart LR
@@ -46,19 +41,19 @@ The full diagram, with every retry path and the crash-recovery loop, is in [docs
 
 ---
 
-## Results at a glance
+## 📊 Results at a glance
 
 | | Result |
 |---|---|
-| **Adaptive vs fixed concurrency** (same rate-limited API) | **6.9× faster, 137× fewer 429s**: 10.4 s vs 71.6 s, 6 vs 820 rejections |
-| **500,000 items** | Memory **flat at ~60 MB** from the first item to the last. A plain `json.load` of the same file needs 295 MB before doing any work. |
-| **Real DigitalOcean run** (1,000 prompts, `mistral-3-14B`) | **993 ok + 7 bad rows isolated, 0 lost**, through **765 real 429s**, for **$0.016** |
-| **`kill -9` mid-job** | Resumed automatically on restart: exactly 1,000 unique results, no loss, no duplicates |
-| **Quality** | 80 offline tests, lint, CI on Python 3.11 / 3.12 / 3.13 |
+| 🚀 **Adaptive vs fixed concurrency** (same rate-limited API) | **6.9× faster, 137× fewer 429s**: 10.4 s vs 71.6 s, 6 vs 820 rejections |
+| 🧠 **500,000 items** | Memory **flat at ~60 MB** from the first item to the last. A plain `json.load` of the same file needs 295 MB before doing any work. |
+| ☁️ **Real DigitalOcean run** (1,000 prompts, `mistral-3-14B`) | **993 ok + 7 bad rows isolated, 0 lost**, through **765 real 429s**, for **$0.016** |
+| 💥 **`kill -9` mid-job** | Resumed automatically on restart: exactly 1,000 unique results, no loss, no duplicates |
+| ✅ **Quality** | 80 offline tests, lint, CI on Python 3.11 / 3.12 / 3.13 |
 
 ---
 
-## Contents
+## 📚 Contents
 
 [Quickstart](#quickstart) | [API](#api) | [How it works](#how-it-works) | [Real DigitalOcean run](#real-digitalocean-run) | [Extensions](#extensions-spaces--webhook) | [Design decisions](#design-decisions) | [Testing](#testing) | [Configuration](#configuration) | [What I'd do next](#what-id-do-next)
 
