@@ -95,6 +95,7 @@ class Job:
         self._prior_retries = 0
         self._prior_429s = 0
         self._spaces_state: dict[str, int] = {}
+        self._saved_performance: dict[str, Any] | None = None  # for jobs reloaded from disk
 
         self.limiter: AdaptiveLimiter | None = None
         self.client: InferenceClient | None = None
@@ -115,6 +116,16 @@ class Job:
         rate_limited = self._prior_429s + (self.limiter.rate_limited_count if self.limiter else 0)
         s = self.settings
         cost = self.input_tokens / 1e6 * s.price_input_per_m + self.output_tokens / 1e6 * s.price_output_per_m
+        performance = {
+            "elapsed_seconds": round(elapsed, 2),
+            "items_per_second": round(self._processed_this_run / elapsed, 2) if elapsed > 0 else 0.0,
+            "retries": retries,
+            "rate_limited_429s": rate_limited,
+            "concurrency_limit": self.limiter.limit if self.limiter else None,
+            "peak_concurrency": self.limiter.peak_in_flight if self.limiter else None,
+        }
+        if self._run_t0 is None and self._saved_performance:
+            performance = self._saved_performance  # finished before a restart: show the recorded numbers
         return {
             "job_id": self.id,
             "status": self.status.value,
@@ -132,14 +143,7 @@ class Job:
                 "failed": self.failed,
                 "percent": round(100 * done / self.total, 1) if self.total else (100.0 if self.total == 0 else 0.0),
             },
-            "performance": {
-                "elapsed_seconds": round(elapsed, 2),
-                "items_per_second": round(self._processed_this_run / elapsed, 2) if elapsed > 0 else 0.0,
-                "retries": retries,
-                "rate_limited_429s": rate_limited,
-                "concurrency_limit": self.limiter.limit if self.limiter else None,
-                "peak_concurrency": self.limiter.peak_in_flight if self.limiter else None,
-            },
+            "performance": performance,
             "tokens": {"input": self.input_tokens, "output": self.output_tokens},
             "estimated_cost_usd": round(cost, 6),
             "errors_by_type": dict(self.errors_by_type),
@@ -178,6 +182,7 @@ class Job:
         job._prior_retries = r.get("retries", 0)
         job._prior_429s = r.get("rate_limited_429s", 0)
         job._spaces_state = r.get("spaces") or {}
+        job._saved_performance = meta.get("performance")
         return job
 
     # ---------- running ----------

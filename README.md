@@ -7,9 +7,9 @@ A small REST service that takes a JSON file of prompts (1,000 in the sample, 500
 | | |
 |---|---|
 | Adaptive controller vs. fixed concurrency (same rate-limited API) | **6.9× faster, 137× fewer 429s** (10.4s vs 71.6s, 6 vs 820) |
-| 500,000-item run | **RSS flat at ~65 MB** from item 1 to item 500,000 *(see [Scaling](#scaling-and-memory))* |
+| 500,000-item run | **RSS flat at ~60 MB** from item 1 to item 500,000; nothing lost *(see [Scaling](#scaling-and-memory))* |
 | Real 1,000-prompt run on DigitalOcean | *see [Real run](#real-run-on-digitalocean)* |
-| Tests | 70 mocked unit + integration tests, CI on Python 3.11–3.13 |
+| Tests | 74 mocked unit + integration tests, CI on Python 3.11–3.13 |
 
 ---
 
@@ -191,9 +191,21 @@ python scripts/run_job.py   # against inference.do-ai.run with MODEL=<model>
 | Resume bookkeeping | 1 byte per item | A `bytearray` done-set: 500 KB for 500,000 items, versus ~30 MB for a Python `set[int]`. |
 | Counters/metrics | O(1) | Only integers. |
 
-**Measured:** a 500,000-item file (46 MB) against the fake API (capacity 200, 1–5 ms latency, 1% 500s):
+**Measured:** a 500,000-item file (46 MB) against the fake API (capacity 200, 1–5 ms latency, 1% random 500s), `MAX_CONCURRENCY=64`, on a laptop:
 
-> *BENCHMARK RESULTS: filled in below.*
+| Point in the run | Items done | Service RSS |
+|---|---|---|
+| Idle, before the job | 0 | 55 MB |
+| ~1% | 8,198 | 64.7 MB |
+| 25% | 125,095 | 59.2 MB |
+| 50% | 250,982 | 59.3 MB |
+| 75% | 376,200 | 59.6 MB |
+| 100% | 500,000 | 59.6 MB |
+| During the 129 MB download | – | 58.5 MB peak |
+
+- **Outcome:** 499,993 succeeded and 7 invalid inputs were isolated, for 500,000 of 500,000 accounted for. 5,138 retries (from the injected 500s) all recovered.
+- **Speed:** 870 s, a sustained 575 items/s. The download streamed 129 MB in 0.29 s.
+- **For comparison:** just `json.load()` of the same file peaks at **295 MB** in RSS, before creating a single task or storing a single result. The streaming pre-flight pass over it peaks at 15 MB and takes 0.18 s.
 
 A naive version that does `json.load()` on the file, creates one task per prompt with `asyncio.gather`, and keeps results in a list grows linearly with the input. It holds all 500,000 prompts, 500,000 coroutine objects and 500,000 responses in memory at once, and that is how you get an OOM.
 
@@ -201,10 +213,10 @@ A naive version that does `json.load()` on the file, creates one task per prompt
 
 **Where the real limits are.** At 500k items the limit is the provider's rate limit and the cost, not memory. Some rough numbers:
 
-- **Throughput** is capped by the provider's rate limit. At, say, 50 concurrent requests and 1 s per request, 500,000 items take about 2.8 hours. The engine itself did about 560 items/s against the local fake API on a laptop, so it is not the bottleneck.
+- **Throughput** is capped by the provider's rate limit. At, say, 50 concurrent requests and 1 s per request, 500,000 items take about 2.8 hours. The engine itself sustained 575 items/s against the local fake API on a laptop, so it is not the bottleneck.
 - **Cost** grows linearly: tokens × price. `MAX_TOKENS` is the main lever.
-- **Disk:** about 0.5–1 KB per result record, so roughly 250–500 MB for 500,000 results, prompts included.
-- **One process, one event loop.** A single asyncio process handles hundreds of concurrent HTTP requests because the work is almost entirely waiting on the network. The CPU cost is JSON encoding and decoding, which is also where the ~560/s ceiling of this benchmark comes from.
+- **Disk:** about 270 bytes per result in the benchmark (short fake answers), so 129 MB for 500k. With real 128-token answers, expect roughly 0.5–1 KB per result, or 250–500 MB for 500k.
+- **One process, one event loop.** A single asyncio process handles hundreds of concurrent HTTP requests because the work is almost entirely waiting on the network. The CPU cost is JSON encoding and decoding, which is also where the ~575/s ceiling of this benchmark comes from (the fake server shares the same laptop).
 
 **When to go multi-machine.** Scale out when either (a) one account's rate limit is no longer the bottleneck and a single process's CPU is, around 1,000 requests/s, or (b) jobs need to survive the machine itself dying and be picked up by another. The design then changes to:
 
@@ -246,16 +258,16 @@ The interfaces stay the same: *reader → queue → worker → controller → cl
 pytest -v
 ```
 
-70 tests, all offline. The inference API is mocked with `respx`, because a 429 or 500 is something the *server* sends. No prompt can trigger one, and a real API won't produce them on demand. Mocks can produce exact failures on command, for free, in milliseconds, in CI. Backoff delays are configured to milliseconds in tests.
+74 tests, all offline. The inference API is mocked with `respx`, because a 429 or 500 is something the *server* sends. No prompt can trigger one, and a real API won't produce them on demand. Mocks can produce exact failures on command, for free, in milliseconds, in CI. Backoff delays are configured to milliseconds in tests.
 
 | File | What it proves |
 |---|---|
-| `test_inference.py` | Success; 429 → success; many 429s → success; 429s have their own budget; `Retry-After` honored; 500/503 → success; persistent 500 gives up after `MAX_RETRIES`; timeouts and connection errors retried; malformed body retried; 400 not retried; 401/403 raise immediately; **no slot held while backing off**; backoff is full jitter and capped; `Retry-After` parsing (seconds, HTTP date, cap) |
+| `test_inference.py` | Success; 429 → success; many 429s → success; 429s have their own budget; `Retry-After` honored; 500/503 → success; persistent 500 gives up after `MAX_RETRIES`; timeouts and connection errors retried; malformed body retried; 400 not retried; 401/403 raise immediately; malformed URL stops instead of retrying; **no slot held while backing off**; backoff is full jitter and capped; `Retry-After` parsing (seconds, HTTP date, cap) |
 | `test_rate_limiter.py` | Halves on 429; floor at min; **one burst = one cut**; slow start; additive increase; ceiling at max; blocks at limit; after a cut, new requests wait for in-flight to drain; `Retry-After` pauses everyone |
 | `test_workers.py` | Every item handled once; skip set honored; pool is bounded; **reader can't run ahead of workers** (backpressure); a fatal error cancels everything |
 | `test_reader_storage.py` | Streaming indexes; empty array; truncated / invalid / non-array / empty file rejected; append + read back; **torn last line repaired**; atomic meta; done-set |
-| `test_jobs.py` | **succeeded + failed = total, no duplicates**; invalid items never hit the API; oversized prompts rejected locally; persistent failures isolated; **rate-limit storm loses nothing**; every request holds a slot; bad key stops early; corrupt file fails with zero API calls; **resume after crash skips finished items**; finished jobs reload without re-running; Spaces parts concatenate to the exact file; Spaces or webhook failures don't fail the job; webhook payload + retry; path traversal rejected |
-| `test_api.py` | Full flow through HTTP (create → poll → download results and errors); `POST` returns before work finishes; `409` while running; `404` unknown; `400` bad path; `422` bad webhook URL; failed jobs still downloadable |
+| `test_jobs.py` | **succeeded + failed = total, no duplicates**; invalid items never hit the API; oversized prompts rejected locally; persistent failures isolated; **rate-limit storm loses nothing**; every request holds a slot; bad key stops early; missing key fails with zero API calls; corrupt file fails with zero API calls; **resume after crash skips finished items**; finished jobs reload without re-running; Spaces parts concatenate to the exact file; Spaces or webhook failures don't fail the job; webhook payload + retry; path traversal rejected |
+| `test_api.py` | Full flow through HTTP (create → poll → download results and errors); `POST` returns before work finishes; `409` while running; `404` unknown; `400` bad path; `422` bad webhook URL; `POST` with no body uses defaults; failed jobs still downloadable; download streams in chunks and skips a torn line |
 
 CI ([.github/workflows/ci.yml](.github/workflows/ci.yml)) runs the full suite on every push against Python 3.11, 3.12 and 3.13.
 

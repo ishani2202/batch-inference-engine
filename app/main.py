@@ -3,10 +3,10 @@
 Run with:  uvicorn app.main:app
 """
 
-import json
 import logging
 from collections.abc import AsyncIterator, Iterator
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException, Query, Request, status
@@ -14,8 +14,7 @@ from fastapi.responses import StreamingResponse
 
 from app.config import Settings, get_settings
 from app.jobs import InputPathError, Job, JobManager
-from app.schemas import CreateJobRequest, CreateJobResponse, JobStatus
-from app.storage import iter_jsonl
+from app.schemas import CreateJobRequest, CreateJobResponse
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logging.getLogger("httpx").setLevel(logging.WARNING)  # one line per request is too noisy
@@ -95,14 +94,29 @@ def create_app(settings: Settings | None = None, manager: JobManager | None = No
     return app
 
 
-def _stream_json_array(path) -> Iterator[str]:
-    """Build a JSON array one line at a time, so memory stays flat for any size."""
+def _stream_json_array(path: Path, chunk_bytes: int = 64 * 1024) -> Iterator[str]:
+    """Build a JSON array from a JSONL file, so memory stays flat for any size.
+
+    Each line is already valid JSON (we wrote it), so lines are passed through
+    as-is rather than parsed and re-serialized, and sent in ~64 KB chunks.
+    """
     yield "["
+    buf: list[str] = []
+    size = 0
     first = True
-    for record in iter_jsonl(path):
-        yield ("" if first else ",") + json.dumps(record, ensure_ascii=False)
-        first = False
-    yield "]"
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                if not line.endswith("\n"):
+                    break  # torn last line from a crash
+                buf.append(line[:-1] if first else "," + line[:-1])
+                first = False
+                size += len(line)
+                if size >= chunk_bytes:
+                    yield "".join(buf)
+                    buf, size = [], 0
+    buf.append("]")
+    yield "".join(buf)
 
 
 app = create_app()

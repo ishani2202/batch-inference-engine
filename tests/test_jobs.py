@@ -211,6 +211,7 @@ async def test_finished_jobs_are_reloaded_not_rerun(settings):
     assert manager.recover() == 0
     reloaded = manager.get(job.id)
     assert reloaded.status == JobStatus.COMPLETED and reloaded.succeeded == 3
+    assert reloaded.snapshot()["performance"] == job.snapshot()["performance"]
     assert route.call_count == 0
 
 

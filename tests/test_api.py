@@ -120,5 +120,16 @@ def test_failed_job_is_downloadable(api, settings):
     assert api.get(f"/job/{job_id}/download").json() == []
 
 
+def test_download_stream_handles_chunking_and_torn_line(tmp_path):
+    from app.main import _stream_json_array
+
+    path = tmp_path / "r.jsonl"
+    path.write_text("".join(json.dumps({"index": i, "text": "x" * 50}) + "\n" for i in range(500)) + '{"index": 500, "te')
+    chunks = list(_stream_json_array(path, chunk_bytes=1024))
+    assert len(chunks) > 10  # actually streamed in pieces
+    assert [r["index"] for r in json.loads("".join(chunks))] == list(range(500))
+    assert json.loads("".join(_stream_json_array(tmp_path / "missing.jsonl"))) == []
+
+
 def test_health(api):
     assert api.get("/health").json() == {"status": "ok"}
