@@ -8,3 +8,6 @@ output/
 docs/*.pdf
 WRITEUP.md
 local_runs/
+# results downloaded by scripts/run_job.py
+*-results.json
+*-errors.json
