@@ -137,6 +137,16 @@ async def test_bad_api_key_stops_job_early(settings):
 
 
 @respx.mock
+async def test_missing_api_key_fails_job_immediately(settings):
+    route = respx.post(CHAT_URL).mock(return_value=ok())
+    settings.model_access_key = ""
+    job = await run_job(settings, prompts(5))
+    assert job.status == JobStatus.FAILED
+    assert job.error == "MODEL_ACCESS_KEY is not set"
+    assert route.call_count == 0
+
+
+@respx.mock
 async def test_corrupt_file_fails_before_any_api_call(settings):
     route = respx.post(CHAT_URL).mock(return_value=ok())
     (settings.data_dir / "batch.json").write_text('[{"prompt": "a"}, {"prompt": "b"')

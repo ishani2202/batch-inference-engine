@@ -13,7 +13,7 @@ from typing import Any
 import httpx
 
 from app.config import Settings
-from app.inference import AuthError, InferenceClient, ItemError
+from app.inference import AuthError, FatalError, InferenceClient, ItemError
 from app.rate_limiter import AdaptiveLimiter
 from app.reader import InputFileError, count_items, iter_items
 from app.schemas import JobStatus
@@ -191,6 +191,8 @@ class Job:
         saver = asyncio.create_task(self._save_periodically())
         cancelled = False
         try:
+            if not s.model_access_key:
+                raise AuthError("MODEL_ACCESS_KEY is not set")
             self.total = await asyncio.to_thread(count_items, self.input_path)
             done = await asyncio.to_thread(self._load_progress)
             if done.count:
@@ -221,7 +223,7 @@ class Job:
                     skip=done,
                 )
             self.status = JobStatus.COMPLETED
-        except (AuthError, InputFileError) as exc:
+        except (FatalError, InputFileError) as exc:
             self.status, self.error = JobStatus.FAILED, str(exc)
             log.error("job %s failed: %s", self.id, exc)
         except asyncio.CancelledError:
@@ -242,7 +244,7 @@ class Job:
                 await self._on_finished()
 
     async def _process(self, index: int, item: Any) -> None:
-        """Handle one item. Per-item failures are recorded, never raised (except AuthError)."""
+        """Handle one item. Per-item failures are recorded, never raised (except FatalError)."""
         item_id = item.get("id") if isinstance(item, dict) else None
         try:
             prompt = validate_item(item, self.settings.max_prompt_chars)
@@ -251,7 +253,7 @@ class Job:
             self._record_error(index, item_id, "invalid_input", str(exc), attempts=0)
         except ItemError as exc:
             self._record_error(index, item_id, exc.kind, exc.message, exc.attempts, exc.status_code)
-        except AuthError:
+        except FatalError:
             raise
         except Exception as exc:  # a bug in our code must not lose the item silently
             log.exception("unexpected error on item %d", index)

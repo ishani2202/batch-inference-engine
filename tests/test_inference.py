@@ -6,7 +6,7 @@ import httpx
 import pytest
 import respx
 
-from app.inference import AuthError, InferenceClient, ItemError, backoff_delay, parse_retry_after
+from app.inference import AuthError, ConfigError, InferenceClient, ItemError, backoff_delay, parse_retry_after
 from app.rate_limiter import AdaptiveLimiter
 from tests.conftest import CHAT_URL, ok
 
@@ -124,6 +124,15 @@ async def test_auth_errors_stop_immediately(client, status):
     with pytest.raises(AuthError):
         await client.complete("hi")
     assert route.call_count == 1
+
+
+async def test_malformed_url_stops_instead_of_retrying(settings):
+    settings.inference_url = "ftp://not-http/v1"
+    async with httpx.AsyncClient() as http:
+        client = InferenceClient(settings, http, AdaptiveLimiter(1, 8, 4))
+        with pytest.raises(ConfigError):
+            await client.complete("hi")
+    assert client.retries == 0
 
 
 @respx.mock

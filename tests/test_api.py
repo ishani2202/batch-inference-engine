@@ -73,6 +73,14 @@ def test_create_returns_before_work_finishes(api, settings):
     assert wait_until_finished(api, job_id)["status"] == "completed"
 
 
+def test_post_without_body_uses_defaults(api, settings):
+    api.mock.post(CHAT_URL).mock(return_value=ok())
+    write_batch(settings, prompts(2), name="sample_batch.json")
+    resp = api.post("/job")
+    assert resp.status_code == 202
+    assert wait_until_finished(api, resp.json()["job_id"])["progress"]["succeeded"] == 2
+
+
 def test_unknown_job_is_404(api):
     assert api.get("/job/nope/status").status_code == 404
     assert api.get("/job/nope/download").status_code == 404

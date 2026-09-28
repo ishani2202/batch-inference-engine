@@ -51,5 +51,5 @@ async def run_pipeline(
             for _ in range(num_workers):
                 tg.create_task(worker())
     except BaseExceptionGroup as eg:
-        # Surface the original error (e.g. AuthError) rather than a group.
+        # Surface the original error (e.g. a FatalError) rather than a group.
         raise eg.exceptions[0] from None

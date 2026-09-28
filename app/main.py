@@ -45,8 +45,9 @@ def create_app(settings: Settings | None = None, manager: JobManager | None = No
         return job
 
     @app.post("/job", status_code=status.HTTP_202_ACCEPTED, response_model=CreateJobResponse)
-    async def create_job(body: CreateJobRequest, request: Request) -> CreateJobResponse:
+    async def create_job(request: Request, body: CreateJobRequest | None = None) -> CreateJobResponse:
         """Start a batch job in the background and return its ID immediately."""
+        body = body or CreateJobRequest()
         try:
             job = request.app.state.manager.create(
                 body.input_file, str(body.webhook_url) if body.webhook_url else None

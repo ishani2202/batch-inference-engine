@@ -3,7 +3,7 @@
 Retry policy:
 * Retry: 429, 408, 5xx, timeouts, connection errors, and malformed 200 bodies.
 * Fail the item immediately: every other 4xx (retrying a bad request won't fix it).
-* Stop the whole job: 401/403 (a bad key would fail every item).
+* Stop the whole job: 401/403 or a malformed request (bad URL): every item would fail.
 * 429s and errors have separate retry budgets (MAX_RATE_LIMIT_RETRIES vs
   MAX_RETRIES): a 429 means "slow down", not "this item is broken".
 * Backoff: "full jitter", a random wait in [0, min(cap, base * 2^attempt)], so
@@ -35,8 +35,16 @@ log = logging.getLogger(__name__)
 RETRYABLE_STATUS = {408, 429, 500, 502, 503, 504}
 
 
-class AuthError(Exception):
-    """The API rejected our credentials; every other item would fail too."""
+class FatalError(Exception):
+    """Every item would fail the same way, so stop the whole job instead of retrying."""
+
+
+class AuthError(FatalError):
+    """The API rejected our credentials (401/403)."""
+
+
+class ConfigError(FatalError):
+    """Our own request is malformed (bad INFERENCE_URL, invalid header), so no retry can help."""
 
 
 class ItemError(Exception):
@@ -146,6 +154,8 @@ class InferenceClient:
                 resp = await self.http.post(self._url, json=payload, headers=self._headers)
             except httpx.TimeoutException:
                 raise _Retryable("timeout") from None
+            except (httpx.UnsupportedProtocol, httpx.LocalProtocolError) as exc:
+                raise ConfigError(f"cannot send request to {self._url!r}: check INFERENCE_URL ({exc})") from None
             except httpx.TransportError as exc:
                 raise _Retryable(f"connection error: {type(exc).__name__}") from None
         latency_ms = int((time.perf_counter() - start) * 1000)
