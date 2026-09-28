@@ -324,8 +324,6 @@ docs/
 
 ## What I'd do next
 
-- **Header-aware pacing:** DO reports its remaining requests in the response headers. Pacing on those would prevent 429s instead of only reacting to them.
-- **One controller shared across concurrent jobs,** per endpoint and model, so parallel jobs share one budget instead of competing for it.
-- **Multi-machine:** a shared durable queue, stateless workers, a distributed rate budget, and Postgres for job state.
-- **Security:** API auth, per-tenant quotas, SSRF protection for webhook URLs, and HMAC-signed webhook payloads.
-- **Operations:** a cancel endpoint, job retention, Prometheus metrics, and a dashboard.
+- **Security.** Add API authentication, block internal addresses in webhook URLs (SSRF protection), and sign webhook payloads so receivers can verify they came from this service.
+- **Deploy on DigitalOcean.** Ship as a Docker image on App Platform, or DOKS once multi-machine, with job state in Managed Postgres and results in Spaces. Autoscaling only pays off once the account's rate quota is raised.
+- **Route between real-time and batch.** Send urgent jobs through this service for live progress, and jobs that can wait to DO Batch Inference, which is cheaper and has separate rate limits.
