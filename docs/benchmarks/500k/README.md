@@ -1,6 +1,6 @@
 # 500,000-item benchmark: raw evidence
 
-Raw output from the run summarized in the main README's [Scaling and memory](../../../README.md#scaling-and-memory) section. The run used 500,000 items (46 MB, made with `scripts/generate_batch.py -n 500000`) against `scripts/fake_inference_server.py` (`FAKE_CAPACITY=200`, 1–5 ms latency, 1% random 500s), with `MAX_CONCURRENCY=64`, `START_CONCURRENCY=32`, on a laptop.
+Raw output from the run summarized in the main README's [Memory stays flat at any size](../../../README.md#2-memory-stays-flat-at-any-size) section. The run used 500,000 items (46 MB, made with `scripts/generate_batch.py -n 500000`) against `scripts/fake_inference_server.py` (`FAKE_CAPACITY=200`, 1–5 ms latency, 1% random 500s), with `MAX_CONCURRENCY=64`, `START_CONCURRENCY=32`, on a laptop.
 
 The 46 MB input and the 129 MB `results.jsonl` are not committed. Regenerate them with the commands in the main README.
 
