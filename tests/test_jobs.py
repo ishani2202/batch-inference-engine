@@ -137,6 +137,16 @@ async def test_bad_api_key_stops_job_early(settings):
 
 
 @respx.mock
+async def test_billing_error_stops_job_early(settings):
+    route = respx.post(CHAT_URL).mock(return_value=httpx.Response(402, json={"message": "not allowed"}))
+    job = await run_job(settings, prompts(500))
+    assert job.status == JobStatus.FAILED
+    assert "402 Payment Required" in job.error
+    assert route.call_count <= settings.max_concurrency  # not 500 identical failures
+    assert job.failed == 0  # no item is blamed for an account problem
+
+
+@respx.mock
 async def test_missing_api_key_fails_job_immediately(settings):
     route = respx.post(CHAT_URL).mock(return_value=ok())
     settings.model_access_key = ""

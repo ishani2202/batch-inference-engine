@@ -3,7 +3,8 @@
 Retry policy:
 * Retry: 429, 408, 5xx, timeouts, connection errors, and malformed 200 bodies.
 * Fail the item immediately: every other 4xx (retrying a bad request won't fix it).
-* Stop the whole job: 401/403 or a malformed request (bad URL): every item would fail.
+* Stop the whole job: 401/403, 402 (billing), or a malformed request (bad URL):
+  every item would fail the same way.
 * 429s and errors have separate retry budgets (MAX_RATE_LIMIT_RETRIES vs
   MAX_RETRIES): a 429 means "slow down", not "this item is broken".
 * Backoff: "full jitter", a random wait in [0, min(cap, base * 2^attempt)], so
@@ -41,6 +42,10 @@ class FatalError(Exception):
 
 class AuthError(FatalError):
     """The API rejected our credentials (401/403)."""
+
+
+class BillingError(FatalError):
+    """The account can't pay for inference (402 Payment Required)."""
 
 
 class ConfigError(FatalError):
@@ -165,6 +170,8 @@ class InferenceClient:
             retry_after = parse_retry_after(resp.headers.get("retry-after"), self.settings.max_retry_after)
             await self.limiter.on_rate_limited(epoch, retry_after)
             raise _Retryable("429 rate limited", 429)
+        if status == 402:
+            raise BillingError(f"inference API returned 402 Payment Required: check the account's billing ({_snippet(resp)})")
         if status in (401, 403):
             raise AuthError(f"inference API returned {status}: check MODEL_ACCESS_KEY ({_snippet(resp)})")
         if status in RETRYABLE_STATUS or status >= 500:

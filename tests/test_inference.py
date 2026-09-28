@@ -6,7 +6,7 @@ import httpx
 import pytest
 import respx
 
-from app.inference import AuthError, ConfigError, InferenceClient, ItemError, backoff_delay, parse_retry_after
+from app.inference import AuthError, BillingError, ConfigError, InferenceClient, ItemError, backoff_delay, parse_retry_after
 from app.rate_limiter import AdaptiveLimiter
 from tests.conftest import CHAT_URL, ok
 
@@ -123,6 +123,18 @@ async def test_auth_errors_stop_immediately(client, status):
     route = respx.post(CHAT_URL).mock(return_value=httpx.Response(status))
     with pytest.raises(AuthError):
         await client.complete("hi")
+    assert route.call_count == 1
+
+
+@respx.mock
+async def test_402_payment_required_stops_immediately(client):
+    """A billing problem is account-wide: every item would get the same 402."""
+    route = respx.post(CHAT_URL).mock(
+        return_value=httpx.Response(402, json={"id": "Payment Required", "message": "You are not allowed to perform this operation"})
+    )
+    with pytest.raises(BillingError) as info:
+        await client.complete("hi")
+    assert "billing" in str(info.value)
     assert route.call_count == 1
 
 

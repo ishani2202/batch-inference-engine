@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     # --- Inference provider (DigitalOcean Serverless Inference, OpenAI-compatible) ---
     inference_url: str = "https://inference.do-ai.run/v1"
     model_access_key: str = ""
-    model: str = "llama3-8b-instruct"
+    model: str = "mistral-3-14B"  # small, non-reasoning, $0.20/$0.20 per 1M tokens on DO
     max_tokens: int = 128
     temperature: float = 0.2
     request_timeout: float = 60.0

@@ -145,3 +145,6 @@ What it does; exact quickstart; architecture diagram + walkthrough; real 1,000-p
 8. **boto3 runs in a thread** (`asyncio.to_thread`) so Spaces uploads never block the event loop.
 9. **Assessment PDF is not committed** (`docs/*.pdf` is gitignored).
 10. **Webhook SSRF** is noted in "What I'd do next"; no code change.
+11. **Model: `mistral-3-14B`.** Llama 3 8B is not offered on DO (`GET /v1/models`). Ministral 3 14B is small, open-weight, non-reasoning, $0.20/$0.20 per 1M tokens. Cheaper reasoning models (gpt-oss-20b, gpt-5-nano) risk empty answers under a 128-token cap.
+12. **402 Payment Required is fatal** (`BillingError`), like 401/403: it is account-wide, so every item would fail the same way.
+13. **Real DO limit is a rate, not concurrency.** Headers show `x-ratelimit-limit-requests: 120` (~2 req/s), no `Retry-After` on 429s. The concurrency controller finds the ceiling but can't prevent every 429. Header-aware pacing is a possible next step (undecided).
