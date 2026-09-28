@@ -2,7 +2,7 @@
 
 **A self-tuning, crash-safe REST service that pushes large prompt files through LLM endpoints without losing a single item.**
 
-Give it a JSON file of prompts and you get a job ID straight away. In the background the engine streams the file through a bounded worker pool to DigitalOcean Serverless Inference. **A shared controller adapts to the provider's rate limit on its own**, like TCP congestion control. Every result is written to disk the moment it arrives. Bad rows are set aside as errors, crashes resume where they stopped, and memory stays flat whether the file holds 1,000 items or 500,000.
+Submit a JSON file of prompts and get a job ID instantly. In the background the engine streams the file through a bounded worker pool to DigitalOcean Serverless Inference. A shared controller adapts to the provider's rate limit on its own, like TCP congestion control. Every result is written to disk the moment it arrives. Bad rows are set aside as errors, crashes resume where they stopped, and memory stays flat whether the file holds 1,000 items or 500,000.
 
 ---
 
