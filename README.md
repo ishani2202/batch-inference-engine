@@ -10,6 +10,8 @@ Submit a JSON file of prompts and get a job ID instantly. In the background the 
 
 ```mermaid
 flowchart LR
+    C(["Client"]) -->|"POST /job"| F
+
     subgraph ING["① Ingestion"]
         F[("input.json")] --> PF["pre-flight:<br/>validate + count"] --> R["streaming reader<br/>(ijson)"]
     end
@@ -28,6 +30,7 @@ flowchart LR
         RJ -.->|parts| SP[("Spaces")]
     end
     GATH --> WH["webhook"]
+    WH -->|"job done"| C2(["Client"])
 ```
 
 | Stage | What happens |
