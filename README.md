@@ -92,9 +92,9 @@ curl -s "localhost:8000/job/<job_id>/download?kind=errors" > errors.json
 ```
 
 <details>
-<summary><b>No API key? Run everything locally against the included fake API</b></summary>
+<summary><b>No API key? Run everything locally against the included mock API</b></summary>
 
-`scripts/fake_inference_server.py` is an OpenAI-compatible fake with a **hidden capacity limit**, random 500s and random latency. It's how the controller benchmark below was measured.
+`scripts/fake_inference_server.py` is an OpenAI-compatible mock with a **hidden capacity limit**, random 500s and random latency. It's how the controller benchmark below was measured.
 
 ```bash
 FAKE_CAPACITY=20 uvicorn scripts.fake_inference_server:app --port 9000 &
