@@ -317,7 +317,9 @@ app/
   webhook.py       Completion webhook
 scripts/           generate_batch.py | fake_inference_server.py | run_job.py
 tests/             80 offline tests
-docs/              architecture.md | benchmarks/500k/ (raw evidence)
+docs/
+  architecture.md  Full diagram with every retry path and the crash-recovery loop
+  benchmarks/      Raw evidence: real-do-run/ | adaptive-vs-fixed/ | crash-recovery/ | 500k/
 ```
 </details>
 
