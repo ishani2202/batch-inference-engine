@@ -147,6 +147,16 @@ async def test_billing_error_stops_job_early(settings):
 
 
 @respx.mock
+async def test_unknown_model_stops_job_early(settings):
+    route = respx.post(CHAT_URL).mock(return_value=httpx.Response(404, json={"message": "model not found"}))
+    job = await run_job(settings, prompts(500))
+    assert job.status == JobStatus.FAILED
+    assert "check MODEL" in job.error
+    assert route.call_count <= settings.max_concurrency
+    assert job.failed == 0
+
+
+@respx.mock
 async def test_missing_api_key_fails_job_immediately(settings):
     route = respx.post(CHAT_URL).mock(return_value=ok())
     settings.model_access_key = ""

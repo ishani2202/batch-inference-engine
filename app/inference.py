@@ -3,8 +3,8 @@
 Retry policy:
 * Retry: 429, 408, 5xx, timeouts, connection errors, and malformed 200 bodies.
 * Fail the item immediately: every other 4xx (retrying a bad request won't fix it).
-* Stop the whole job: 401/403, 402 (billing), or a malformed request (bad URL):
-  every item would fail the same way.
+* Stop the whole job: 401/403, 402 (billing), 404 (unknown MODEL or wrong URL), or a
+  malformed request (bad URL): every item would fail the same way.
 * 429s and errors have separate retry budgets (MAX_RATE_LIMIT_RETRIES vs
   MAX_RETRIES): a 429 means "slow down", not "this item is broken".
 * Backoff: "full jitter", a random wait in [0, min(cap, base * 2^attempt)], so
@@ -49,7 +49,7 @@ class BillingError(FatalError):
 
 
 class ConfigError(FatalError):
-    """Our own request is malformed (bad INFERENCE_URL, invalid header), so no retry can help."""
+    """Our request can never succeed (unknown MODEL, bad INFERENCE_URL), so no retry can help."""
 
 
 class ItemError(Exception):
@@ -172,6 +172,9 @@ class InferenceClient:
             raise _Retryable("429 rate limited", 429)
         if status == 402:
             raise BillingError(f"inference API returned 402 Payment Required: check the account's billing ({_snippet(resp)})")
+        if status == 404:
+            # On the chat endpoint a 404 means the model or URL is wrong, never one bad item.
+            raise ConfigError(f"inference API returned 404: check MODEL={self.settings.model!r} and INFERENCE_URL ({_snippet(resp)})")
         if status in (401, 403):
             raise AuthError(f"inference API returned {status}: check MODEL_ACCESS_KEY ({_snippet(resp)})")
         if status in RETRYABLE_STATUS or status >= 500:

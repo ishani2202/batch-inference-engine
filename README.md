@@ -9,7 +9,7 @@ A small REST service that takes a JSON file of prompts (1,000 in the sample, 500
 | Adaptive controller vs. fixed concurrency (same rate-limited API) | **6.9× faster, 137× fewer 429s** (10.4s vs 71.6s, 6 vs 820) |
 | 500,000-item run | **RSS flat at ~60 MB** from item 1 to item 500,000; nothing lost *(see [Scaling](#scaling-and-memory))* |
 | Real 1,000-prompt run on DigitalOcean (`mistral-3-14B`) | **993 ok + 7 invalid, 0 lost, through 765 real 429s; $0.016** *(see [Real run](#real-run-on-digitalocean))* |
-| Tests | 76 mocked unit + integration tests, ruff lint, CI on Python 3.11–3.13 |
+| Tests | 78 mocked unit + integration tests, ruff lint, CI on Python 3.11–3.13 |
 
 ---
 
@@ -166,7 +166,7 @@ The controller's limit oscillated between 10 and 20 in the classic AIMD sawtooth
 | `200` with a valid body | Success. Grows the concurrency limit. |
 | `429` | Halve the limit (once per burst), honor `Retry-After` globally, full-jitter backoff, up to `MAX_RATE_LIMIT_RETRIES` |
 | `5xx`, `408`, timeout, connection error, malformed `200` | Full-jitter backoff `random(0, min(30s, 1s·2^n))`, up to `MAX_RETRIES` |
-| `401` / `403`, `402 Payment Required`, missing key, malformed `INFERENCE_URL` | **Stop the whole job.** Every item would fail the same way. |
+| `401` / `403`, `402 Payment Required`, `404` (unknown `MODEL` or wrong URL), missing key, malformed `INFERENCE_URL` | **Stop the whole job.** Every item would fail the same way. |
 | Any other `4xx` (e.g. prompt too long) | Record as an error immediately. Retrying won't help. |
 | Invalid item (not an object, missing/empty/non-string prompt, over `MAX_PROMPT_CHARS`) | Record as an error **without calling the API** |
 
@@ -205,7 +205,7 @@ The account's limit is **120 requests per window** (the observed ~2 requests/s m
 
 `MAX_TOKENS=128` keeps answers and cost small. Switching models only requires changing the `MODEL` env var.
 
-**A billing lesson.** The first attempt returned `402 Payment Required` because the account had no billing set up. That exposed a gap: a 402 was treated as a per-item error, so a full run would have recorded the same failure 993 times. A 402 is now fatal, like 401/403, and stops the job immediately with a clear message (`test_402_payment_required_stops_immediately`, `test_billing_error_stops_job_early`).
+**A billing lesson.** The first attempt returned `402 Payment Required` because the account had no billing set up. That exposed a gap: a 402 was treated as a per-item error, so a full run would have recorded the same failure 993 times. A 402 is now fatal, like 401/403, and stops the job immediately with a clear message (`test_402_payment_required_stops_immediately`, `test_billing_error_stops_job_early`). The same check against an unknown model name showed DigitalOcean answers `404 "model not found"` (including for the old `llama3-8b-instruct` default), so a 404 is now fatal too (`test_unknown_model_404_stops_immediately`, `test_unknown_model_stops_job_early`).
 
 ## Scaling and memory
 
@@ -287,15 +287,15 @@ The interfaces stay the same: *reader → queue → worker → controller → cl
 pytest -v
 ```
 
-76 tests, all offline. The inference API is mocked with `respx`, because a 429 or 500 is something the *server* sends. No prompt can trigger one, and a real API won't produce them on demand. Mocks can produce exact failures on command, for free, in milliseconds, in CI. Backoff delays are configured to milliseconds in tests.
+78 tests, all offline. The inference API is mocked with `respx`, because a 429 or 500 is something the *server* sends. No prompt can trigger one, and a real API won't produce them on demand. Mocks can produce exact failures on command, for free, in milliseconds, in CI. Backoff delays are configured to milliseconds in tests.
 
 | File | What it proves |
 |---|---|
-| `test_inference.py` | Success; 429 → success; many 429s → success; 429s have their own budget; `Retry-After` honored; 500/503 → success; persistent 500 gives up after `MAX_RETRIES`; timeouts and connection errors retried; malformed body retried; 400 not retried; 401/403 raise immediately; 402 raises a billing error immediately; malformed URL stops instead of retrying; **no slot held while backing off**; backoff is full jitter and capped; `Retry-After` parsing (seconds, HTTP date, cap) |
+| `test_inference.py` | Success; 429 → success; many 429s → success; 429s have their own budget; `Retry-After` honored; 500/503 → success; persistent 500 gives up after `MAX_RETRIES`; timeouts and connection errors retried; malformed body retried; 400 not retried; 401/403 raise immediately; 402 raises a billing error immediately; 404 (unknown model) raises a config error immediately; malformed URL stops instead of retrying; **no slot held while backing off**; backoff is full jitter and capped; `Retry-After` parsing (seconds, HTTP date, cap) |
 | `test_rate_limiter.py` | Halves on 429; floor at min; **one burst = one cut**; slow start; additive increase; ceiling at max; blocks at limit; after a cut, new requests wait for in-flight to drain; `Retry-After` pauses everyone |
 | `test_workers.py` | Every item handled once; skip set honored; pool is bounded; **reader can't run ahead of workers** (backpressure); a fatal error cancels everything |
 | `test_reader_storage.py` | Streaming indexes; empty array; truncated / invalid / non-array / empty file rejected; append + read back; **torn last line repaired**; atomic meta; done-set |
-| `test_jobs.py` | **succeeded + failed = total, no duplicates**; invalid items never hit the API; oversized prompts rejected locally; persistent failures isolated; **rate-limit storm loses nothing**; every request holds a slot; bad key stops early; 402 billing error stops early and blames no item; missing key fails with zero API calls; corrupt file fails with zero API calls; **resume after crash skips finished items**; finished jobs reload without re-running; Spaces parts concatenate to the exact file; Spaces or webhook failures don't fail the job; webhook payload + retry; path traversal rejected |
+| `test_jobs.py` | **succeeded + failed = total, no duplicates**; invalid items never hit the API; oversized prompts rejected locally; persistent failures isolated; **rate-limit storm loses nothing**; every request holds a slot; bad key stops early; 402 billing error and 404 unknown model stop early and blame no item; missing key fails with zero API calls; corrupt file fails with zero API calls; **resume after crash skips finished items**; finished jobs reload without re-running; Spaces parts concatenate to the exact file; Spaces or webhook failures don't fail the job; webhook payload + retry; path traversal rejected |
 | `test_api.py` | Full flow through HTTP (create → poll → download results and errors); `POST` returns before work finishes; `409` while running; `404` unknown; `400` bad path; `422` bad webhook URL; `POST` with no body uses defaults; failed jobs still downloadable; download streams in chunks and skips a torn line |
 
 CI ([.github/workflows/ci.yml](.github/workflows/ci.yml)) runs the full suite on every push against Python 3.11, 3.12 and 3.13.

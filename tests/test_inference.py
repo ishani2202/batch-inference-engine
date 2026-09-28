@@ -138,6 +138,17 @@ async def test_402_payment_required_stops_immediately(client):
     assert route.call_count == 1
 
 
+@respx.mock
+async def test_unknown_model_404_stops_immediately(client):
+    """DO answers an unknown model with 404 "model not found": a config error, not a bad item."""
+    body = {"error": {"message": "model not found", "type": "not_found_error"}, "status_code": 404}
+    route = respx.post(CHAT_URL).mock(return_value=httpx.Response(404, json=body))
+    with pytest.raises(ConfigError) as info:
+        await client.complete("hi")
+    assert "MODEL='test-model'" in str(info.value)
+    assert route.call_count == 1
+
+
 async def test_malformed_url_stops_instead_of_retrying(settings):
     settings.inference_url = "ftp://not-http/v1"
     async with httpx.AsyncClient() as http:
