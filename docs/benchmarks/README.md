@@ -1,6 +1,6 @@
 # Evidence
 
-Raw output behind every number in the main README. The large regenerable files (inputs and big result sets) are not included.
+Raw output behind the main results in the README. The large regenerable files (inputs and big result sets) are not included.
 
 | Folder | What it backs up | Key files |
 |---|---|---|

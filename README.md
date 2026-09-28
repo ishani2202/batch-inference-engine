@@ -112,8 +112,8 @@ Regenerate the input, or build a bigger one: `python scripts/generate_batch.py -
 | Endpoint | Description |
 |---|---|
 | `POST /job` | Start a job. Optional body: `{"input_file": "sample_batch.json", "webhook_url": "https://…"}`. Returns **`202`** with the job ID immediately. `400` if the file is missing or outside `DATA_DIR`; `422` if the webhook URL is invalid. |
-| `GET /job/{id}/status` | `pending` / `running` / `completed` / `failed`, plus progress, retries, 429s, current and peak concurrency, items/s, tokens, estimated cost, and an error breakdown |
-| `GET /job/{id}/download` | Streams the successful results as a JSON array (`?kind=errors` for the failed rows). `409` while the job is running. |
+| `GET /job/{id}/status` | `pending` / `running` / `completed` / `failed`, plus progress, retries, 429s, current and peak concurrency, items/s, tokens, estimated cost, and an error breakdown. `404` if the job ID is unknown. |
+| `GET /job/{id}/download` | Streams the successful results as a JSON array (`?kind=errors` for the failed rows). `409` while the job is running, `404` if the job ID is unknown. |
 | `GET /health` | Liveness check |
 
 <details>
@@ -196,7 +196,7 @@ Where each limit kicks in as a job grows, from first to hit to last:
 | **Cost** | Grows linearly with tokens. At `mistral-3-14B` prices, 1,000 prompts cost $0.016, so 500k would be about $8. | `MAX_TOKENS` is the main lever |
 | **Single-process CPU** | Measured at 575 items/s on a laptop, with the fake API sharing the machine. A dedicated process should manage somewhere around 1,000 req/s (**an estimate, not measured**). | Scale out: a shared queue, stateless workers, a shared rate budget, and Postgres for job state. The internal interfaces stay the same. |
 | **Machine loss** | Local disk is lost. Spaces holds everything except the last `SPACES_FLUSH_SECONDS` of results. | Multi-machine with shared job state, so another node can take over the job |
-| **Disk** | About 0.5–1 KB per result with real answers, so roughly 250–500 MB for 500k | Rotate or ship results to Spaces |
+| **Disk** | About 0.5 KB per result (measured: 524 bytes on the real run), so roughly 260 MB for 500k | Rotate or ship results to Spaces |
 | **Memory** | Not a threshold. It stays flat at ~60 MB (measured on 500k items). | – |
 
 ---
