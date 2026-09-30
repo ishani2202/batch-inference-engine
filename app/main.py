@@ -97,7 +97,7 @@ def create_app(settings: Settings | None = None, manager: JobManager | None = No
 def _stream_json_array(path: Path, chunk_bytes: int = 64 * 1024) -> Iterator[str]:
     """Build a JSON array from a JSONL file, so memory stays flat for any size.
 
-    Each line is already valid JSON (we wrote it), so lines are passed through
+    Each line is already valid JSON, so lines are passed through
     as-is rather than parsed and re-serialized, and sent in ~64 KB chunks.
     """
     yield "["
