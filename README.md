@@ -192,7 +192,7 @@ The controller settled into the classic AIMD sawtooth just under the hidden capa
 
 | Ceiling | When you hit it | What to do |
 |---|---|---|
-| **Provider rate limit**: 120 requests/min on this account | Immediately. 500k prompts need **~69 hours** at that rate, while the engine runs at under 1% of its own capacity. | Ask DigitalOcean for a higher quota, split the work across several API keys, or send batches that can wait to DO Batch Inference |
+| **Provider rate limit**: 120 requests/min on this account | Immediately. 500k prompts need **~69 hours** at that rate, while the engine runs at under 1% of its own capacity. | Split the work across several API keys, or send batches that can wait to DO Batch Inference |
 | **Single-process throughput**: 575 items/s measured, ~1,000/s estimated on a dedicated host | Only if the provider allowed about 290× today's rate | Run several copies of the service: one shared queue, one shared rate limit across machines, and Postgres for job state. The internal design stays the same. |
 | **Machine loss** | At any time | Already limited: Spaces holds everything except the last 30 s of results. Next: shared job state, so another machine can pick up the job. |
 
